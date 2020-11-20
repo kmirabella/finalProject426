@@ -55,7 +55,7 @@ async function handleSubmitSignup(e) {
             //if checked student
             await axios({
                 method: "POST",
-                url: "/student",
+                url: "/testing.json",
                 data: {
                     "firstName": firstName,
                     "lastName": lastName,
