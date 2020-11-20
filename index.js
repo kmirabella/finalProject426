@@ -224,11 +224,10 @@ app.delete('/student/:id', (req, res)=>{
     res.json(true); 
 });
 
+const port = 40146;
+console.log(port); 
+app.listen(port, ()=>{
+    console.log("this works on port: " + port); 
+})
 
 
-
-// const port = 3030; 
-// app.listen(port, ()=> {
-//     console.log("this works on port: "+ port);
-
-// })
