@@ -3,6 +3,17 @@ const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
+export async function getDadJoke() {
+    const joke = await axios({
+        method: 'get',
+        url: 'https://icanhazdadjoke.com/',
+        withCredentials: true,
+    });
+    console.log(joke);
+    
+    
+};
+
 const expressSession = require('express-session');
 app.use(expressSession({
     name: "groupSessionCookie",
