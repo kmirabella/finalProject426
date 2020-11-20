@@ -40,9 +40,14 @@
     "user": "kaitlyn",
     "password": "comp123"
   },
-  "5": {
-    "id": 5,
-    "user": "kaitlyn",
-    "password": "comp123"
+  "6": {
+    "id": 6,
+    "firstName": "Bob",
+    "user": "kaitlyn"
+  },
+  "7": {
+    "id": 7,
+    "firstName": "Billy",
+    "user": "kaitlyn"
   }
 }
