@@ -41,6 +41,14 @@ async function handleSubmitSignup(e) {
             await axios({
                 method: "get",
                 url: "https://examscheduler2.netlify.app/professor",
+                data: {
+                    "firstName": firstName,
+                    "lastName": lastName,
+                    "email": email,
+                    "password": pass,
+                    "classes": [],
+                    "students": []
+                }
             })
             console.log(`signed up new user: ${firstName} ${lastName}`)
         } else {
