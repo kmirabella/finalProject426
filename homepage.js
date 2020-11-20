@@ -34,34 +34,36 @@ async function handleSubmitSignup(e) {
     let confirmedPassword = $("#confirm-password").val();
     // front end password match confirmation
     if (pass == confirmedPassword) {
-        // store out data here by creating a new professor or student object 
+        // store our data here by creating a new professor or student object 
         if ($("input[id='professor-radio']:checked").val() == "on") {
+            //if checked professor
             console.log('about to send and create backend Prof. obj');
-            // await axios({
-            //     method: "POST",
-            //     url: "http://localhost:3000/professor",
-            //     data: {
-            //         "firstName": firstName,
-            //         "lastName": lastName,
-            //         "email": email,
-            //         "password": pass,
-            //         "classes": [],
-            //         "students": []
-            //     }
-            // })
+            await axios({
+                method: "POST",
+                url: "/professor",
+                data: {
+                    "firstName": firstName,
+                    "lastName": lastName,
+                    "email": email,
+                    "password": pass,
+                    "classes": [],
+                    "students": []
+                }
+            })
             console.log(`signed up new user: ${firstName} ${lastName}`)
         } else {
-            // await axios({
-            //     method: "POST",
-            //     url: "student",
-            //     data: {
-            //         "firstName": firstName,
-            //         "lastName": lastName,
-            //         "email": email,
-            //         "password": pass,
-            //         "classes": []
-            //     }
-            // })
+            //if checked student
+            await axios({
+                method: "POST",
+                url: "/student",
+                data: {
+                    "firstName": firstName,
+                    "lastName": lastName,
+                    "email": email,
+                    "password": pass,
+                    "classes": []
+                }
+            })
         }
 
     } else {
