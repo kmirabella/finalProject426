@@ -39,7 +39,7 @@ async function handleSubmitSignup(e) {
             //if checked professor
             console.log('about to send and create backend Prof. obj');
             await axios({
-                method: "get",
+                method: "post",
                 url: "https://examscheduler2.netlify.app/professor",
                 data: {
                     "firstName": firstName,
