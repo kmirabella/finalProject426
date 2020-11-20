@@ -3,11 +3,21 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+<<<<<<< HEAD
   "type": "module",
   "scripts": {
     "test": "index.js"
+=======
+  "engines":{
+    "node": "v14.8.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.html"
+>>>>>>> 9b0853972d0b995eda42530d8ab9b261df0366ed
 
   },
+  
   "author": "",
   "license": "ISC",
   "dependencies": {
