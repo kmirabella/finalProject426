@@ -227,8 +227,8 @@ app.delete('/student/:id', (req, res)=>{
 
 
 
-const port = 3030; 
-app.listen(port, ()=> {
-    console.log("this works on port: "+ port);
+// const port = 3030; 
+// app.listen(port, ()=> {
+//     console.log("this works on port: "+ port);
 
-})
+// })

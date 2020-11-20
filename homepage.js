@@ -28,7 +28,6 @@ async function handleLogin(e) {
 async function handleSubmitSignup(e) {
     e.preventDefault();
     let firstName = $('#firstName').val();
-    console.log(firstName);
     let lastName = $('#lastName').val();
     let email = $("#email").val();
     let pass = $("#password").val();
@@ -38,18 +37,18 @@ async function handleSubmitSignup(e) {
         // store out data here by creating a new professor or student object 
         if ($("input[id='professor-radio']:checked").val() == "on") {
             console.log('about to send and create backend Prof. obj');
-            await axios({
-                method: "POST",
-                url: "https://examscheduler2.netlify.app/professor",
-                data: {
-                    "firstName": firstName,
-                    "lastName": lastName,
-                    "email": email,
-                    "password": pass,
-                    "classes": [],
-                    "students": []
-                }
-            })
+            // await axios({
+            //     method: "POST",
+            //     url: "http://localhost:3000/professor",
+            //     data: {
+            //         "firstName": firstName,
+            //         "lastName": lastName,
+            //         "email": email,
+            //         "password": pass,
+            //         "classes": [],
+            //         "students": []
+            //     }
+            // })
             console.log(`signed up new user: ${firstName} ${lastName}`)
         } else {
             // await axios({
