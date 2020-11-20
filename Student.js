@@ -3,11 +3,12 @@ const student_data = require('data-store')({path: process.cwd()+'/data/student.j
 
 class Student{
 
-    constructor(id, firstName, lastName, email, password, classes){
+    constructor(id, firstName, lastName, email, user, password, classes){
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName; 
         this.email = email; 
+        this.user = user; 
         this.password = password;
         this.classes = classes;
     }
@@ -24,11 +25,14 @@ Student.getAllIDs= ()=>{
     // return an array of prof ids 
     return Object.keys(student_data.data).map(id=>{return parseInt(id);});
 }
+Student.getAllIDsForUser = (user) => { 
+    return Object.keys(student_data.data).filter((id) => student.get(id).user == user).map((id) =>parseInt(id));
+}
 
 Student.findByID= (id) => {
     let s = student_data.get(id);
     if(s != null){
-     return new Student(s.id, s.firstName, s.lastName, s.email, s.password, s.classes); 
+     return new Student(s.id, s.firstName, s.lastName, s.email, s.user,s.password, s.classes); 
     }
     return null; 
  }

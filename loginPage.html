@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./homepage.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./homepage.js" type="module"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root">
+        <nav class="navbar has-background-grey-lighter ">
+            <img onclick="location.href='./index.html'"  alt = "logo" src="./logo2.png" style="height: 100px" />
+        </nav>
+        <div class="hero is-fullheight is-danger">
+            <div class="hero-body">
+                <div class="container has-text-centered">
+                    <div class="column is-8 is-offset-2">
+                        <h3 class="title has-text-white">Login</h3>
+                        <hr class="login-hr">
+                        <p class="subtitle has-text-white">Welcome back!</p>
+                        <form id="login-form">
+                            <input id="login-email" class="field control input is-large" type="email"
+                                placeholder="Email" autofocus="">
+                            <input id="login-password" class="field control input is-large" type="password"
+                                placeholder="Password">
+                        </form>
+                        <br>
+                        <div class="buttons is-centered">
+                            <button id="login-submit-button" class="button has-addons has-background-white is-large has-text-danger ">
+                                <Strong>Login</Strong></button>
+                        </div>
+                        <br>
+                        <p id="signUpLink">Don't have an account yet?
+                            <a href="./signupPage.html"> Sign up here!</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

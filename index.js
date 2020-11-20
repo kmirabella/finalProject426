@@ -138,21 +138,40 @@ app.delete('/professor/:id', (req, res)=>{
 });
 // RESTFUL INTERFACE FOR STUDENTS ======================================================
 app.get('/student', (req, res) => {
+    if(req.session.user == undefined){
+        // no one is logged in yet 
+        res.status(403).send("unauthorized");
+        return;
+    }
     res.json(Student.getAllIDsForUser());
     return; 
 });
 app.get('/student/:id', (req, res) => {
+    if(req.session.user == undefined){
+        // no one is logged in yet 
+        res.status(403).send("unauthorized");
+        return;
+    }
     let s = Student.findByID(req.params.id);
     if(s== null){
         res.status(404).send("Student not found");
+        return; 
+    }
+    if(s.user != req.session.user){
+        res.status(403).send("unauthorized");
         return; 
     }
     res.json(s); 
 
 });
 app.post('/student', (req, res)=>{
-    let {firstName, lastName, email, password,  classes} =req.body;
-    let s = Student.create(firstName, lastName, email, password, classes);
+    if(req.session.user == undefined){
+        // no one is logged in yet 
+        res.status(403).send("unauthorized");
+        return; 
+    }
+    let s = Student.create(req.body.firstName, req.body.lastname, req.body.email,
+        req.session.user, req.body.password, req.body.classes);
     if(s == null){
         res.status(400).send("Bad request");
         return; 
@@ -161,9 +180,18 @@ app.post('/student', (req, res)=>{
 
 });
 app.put('/student/:id', (req, res)=>{
+    if(req.session.user == undefined){
+        // no one is logged in yet 
+        res.status(403).send("unauthorized");
+        return; 
+    }
     let s = Student.findByID(req.params.id);
     if(s == null){
         res.status(404).send("Student not found");
+        return; 
+    }
+    if(s.user != req.session.user){
+        res.status(403).send("unauthorized");
         return; 
     }
     let {firstName, lastName, email, password,  classes} = req.body; 
@@ -178,9 +206,18 @@ app.put('/student/:id', (req, res)=>{
 
 }); 
 app.delete('/student/:id', (req, res)=>{
+    if(req.session.user == undefined){
+        // no one is logged in yet 
+        res.status(403).send("unauthorized");
+        return; 
+    }
     let s= Student.findByID(req.params.id);
     if(s == null){
         res.status(404).send("Student not found");
+        return; 
+    }
+    if(s.user != req.session.user){
+        res.status(403).send("unauthorized");
         return; 
     }
     s.delete();

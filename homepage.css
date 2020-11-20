@@ -1,0 +1,28 @@
+body {
+    overflow: hidden;
+    width: auto;
+    height: auto;
+    font-family: "amatic SC"
+  }
+  
+  strong {
+    font-family: "Amatic SC"
+  }
+  
+  .homepage{
+    height: 650px; 
+    background-image: url("frontPage2.png");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+  
+  }
+  
+  #loginSignupButton_Text {
+    padding-top: 28%;
+    padding-left: 41%;
+    width: 5px;
+    display: flex;
+    flex-flow: column wrap;
+    text-align: center;
+  
+  }

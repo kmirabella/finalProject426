@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./homepage.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./homepage.js" type="module"></script>
+    <title>Sign Up</title>
+</head>
+
+<body>
+    <nav class="navbar has-background-grey-lighter ">
+        <img onclick="location.href='./index.html'" alt = "logo" src="./logo2.png" style="height: 100px" />
+    </nav>
+    <div class="hero is-fullheight is-danger">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <div class="column is-8 is-offset-2 ">
+                    <h3 class="title has-text-white">Sign up</h3>
+                    <hr>
+                    <p class="subtitle has-text-white">Welcome!</p>
+                    <form id="signup-form">
+                        <h1 class = "has-text-left has-text-weight-bold is-size-5"> First Name: </h1>
+                        <input id="firstName" class="field input is-large" 
+                           > 
+                        <h2 class = "has-text-left has-text-weight-bold is-size-5"> Last Name: </h2>
+                        <input id="lastName" class="field input is-large" 
+                            >
+                        <input id="email" class="field input is-large" type="email" placeholder="Email" autofocus="">
+                        <input id="password" class="field input is-large" type="password" placeholder="Password">
+                        <input id="confirm-password" class="field input is-large" type="password"
+                            placeholder="Confirm Password">
+                        <h1 class="subtitle has-text-white has-text-weight-bold is-size-5"> <Strong>I am a: </Strong></h1>
+                        <div class="control">
+                            <label class="radio">
+                                <input id="professor-radio" type="radio" name="answer">
+                                Professor
+                            </label>
+                            <label class="radio">
+                                <input id="student-radio" type="radio" name="answer">
+                                Student
+                            </label>
+                        </div>
+                        <br>
+                        <div class="buttons is-centered">
+                            <button class="button has-addons has-background-white is-large has-text-danger ">
+                                <Strong> Create my Account!</Strong></button>
+                        </div>
+                    </form>
+                    <br>
+                    <div>
+                        <p>Already have an account?
+                            <a href="./loginPage.html"><strong>Login here</strong></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
