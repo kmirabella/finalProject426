@@ -13,7 +13,7 @@ async function handleLogin(e) {
     // try {
     //     await axios({
     //         method: 'POST',
-    //         url: "https://sleepy-galileo-3683d4.netlify.app/index.html",
+    //         url: "http://localhost:3000/signupPage.html",
     //         data: {
     //             "user": email,
     //             "password": password
@@ -38,7 +38,18 @@ async function handleSubmitSignup(e) {
         if ($("input[id='professor-radio']:checked").val() == "on") {
             //if checked professor
             console.log('about to send and create backend Prof. obj');
-        
+            await axios({
+                method: "POST",
+                url: "/professor",
+                data: {
+                    "firstName": firstName,
+                    "lastName": lastName,
+                    "email": email,
+                    "password": pass,
+                    "classes": [],
+                    "students": []
+                }
+            })
             console.log(`signed up new user: ${firstName} ${lastName}`)
         } else {
             //if checked student
