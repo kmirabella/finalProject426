@@ -24,6 +24,7 @@ var calendarHeatmap = {
   init: function(data, container, color, overview, handler) {
     // Set calendar data
     calendarHeatmap.data = data;
+    console.log("Hello")
 
     // Set calendar container
     calendarHeatmap.container = container;
