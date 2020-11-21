@@ -1,18 +1,18 @@
-const express = require('express');
-const app = express();
-const bodyParser = require('body-parser');
-app.use(bodyParser.json());
+// const express = require('express');
+// const app = express();
+// const bodyParser = require('body-parser');
+// app.use(bodyParser.json());
 
-export async function getDadJoke() {
-    const joke = await axios({
-        method: 'get',
-        url: 'https://icanhazdadjoke.com/',
-        withCredentials: true,
-    });
-    console.log(joke);
+// export async function getDadJoke() {
+//     const joke = await axios({
+//         method: 'get',
+//         url: 'https://icanhazdadjoke.com/',
+//         withCredentials: true,
+//     });
+//     console.log(joke);
     
     
-};
+// };
 
 const express = require('express');
 const app = express();
@@ -245,4 +245,6 @@ app.listen(port, ()=>{
     console.log("this works: " + port)
     
 })
+
+
 
