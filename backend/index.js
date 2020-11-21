@@ -155,6 +155,32 @@ app.put('/professor/:id', (req, res) => {
 
 });
 
+app.put('/professor/exams/:id', (req, res) => {
+    if (req.session.user == undefined) {
+        // no one is logged in yet 
+        res.status(403).send("Unauthorized");
+        return;
+    }
+
+    let p = Professor.findByID(req.params.id);
+    if (p == null) {
+        res.status(404).send("Professor not found");
+        return;
+    }
+    if (p.user != req.session.user) {
+        res.status(403).send("Unauthorized");
+        return;
+    }
+    
+    let classId = req.body.classId;
+    let examDates = req.body.examDates;
+    p.classes[classId].exam_dates = examDates;
+
+    p.update();
+    res.json(p);
+
+});
+
 // prof. deletes their account
 app.delete('/professor/:id', (req, res) => {
     if (req.session.user == undefined) {

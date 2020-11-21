@@ -4,7 +4,42 @@
     "firstName": "Gary",
     "lastName": "Bishop",
     "email": "gary@unc.edu",
-    "classes": "classes",
+    "classes": {
+        "0":{
+          "id": 0,
+          "name": "comp110_001",
+          "exam_dates": ["9/24/2020", "10/13/2020", "11/26/2020"], 
+          "students": {
+              "kaitlyn":{
+                  "password": "comp123",
+                  "name": "Kaitlyn",
+                  "type": "Student"
+              },
+              "kush":{
+                  "password": "comp123",
+                  "name": "Kush",
+                  "type": "student"
+              }
+          }
+      },
+      "1":{
+          "id": 1,
+          "name": "comp426_001",
+          "exam_dates": ["9/24/2020", "10/12/2020", "11/26/2020"], 
+          "students": {
+              "kaitlyn":{
+                  "password": "comp123",
+                  "name": "Kaitlyn",
+                  "type": "Student"
+              },
+              "kush":{
+                  "password": "comp123",
+                  "name": "Kush",
+                  "type": "student"
+              }
+          }
+      }
+    },
     "students": [
       "s1",
       "s2"
@@ -15,14 +50,85 @@
     "firstName": "Ketan",
     "lastName": "Mayer-Patel",
     "email": "kmp@unc.edu",
-    "classes": "classes",
+    "classes": {
+        "0":{
+          "id": 0,
+          "name": "comp110_001",
+          "exam_dates": ["9/24/2020", "10/13/2020", "11/26/2020"], 
+          "students": {
+              "kaitlyn":{
+                  "password": "comp123",
+                  "name": "Kaitlyn",
+                  "type": "Student"
+              },
+              "kush":{
+                  "password": "comp123",
+                  "name": "Kush",
+                  "type": "student"
+              }
+          }
+      },
+      "1":{
+          "id": 1,
+          "name": "comp426_001",
+          "exam_dates": ["9/24/2020", "10/12/2020", "11/26/2020"], 
+          "students": {
+              "kaitlyn":{
+                  "password": "comp123",
+                  "name": "Kaitlyn",
+                  "type": "Student"
+              },
+              "kush":{
+                  "password": "comp123",
+                  "name": "Kush",
+                  "type": "student"
+              }
+          }
+      }
+    },
     "students": [
       "s1"
     ]
   },
   "2": {
     "id": 2,
-    "user": "comp462"
+    "user": "comp462",
+    "classes": {
+        "0":{
+          "id": 0,
+          "name": "comp110_001",
+          "exam_dates": ["9/24/2020", "10/13/2020", "11/26/2020"], 
+          "students": {
+              "kaitlyn":{
+                  "password": "comp123",
+                  "name": "Kaitlyn",
+                  "type": "Student"
+              },
+              "kush":{
+                  "password": "comp123",
+                  "name": "Kush",
+                  "type": "student"
+              }
+          }
+      },
+      "1":{
+          "id": 1,
+          "name": "comp426_001",
+          "exam_dates": ["9/24/2020", "10/12/2020", "11/26/2020"], 
+          "students": {
+              "kaitlyn":{
+                  "password": "comp123",
+                  "name": "Kaitlyn",
+                  "type": "Student"
+              },
+              "kush":{
+                  "password": "comp123",
+                  "name": "Kush",
+                  "type": "student"
+              }
+          }
+      }
+    }
   },
   "3": {
     "id": 3,
@@ -30,7 +136,42 @@
     "email": "montek@unc.edu",
     "user": "kmp",
     "password": "montek",
-    "classes": "classes",
+    "classes": {
+        "0":{
+          "id": 0,
+          "name": "comp110_001",
+          "exam_dates": ["9/24/2020", "10/13/2020", "11/26/2020"], 
+          "students": {
+              "kaitlyn":{
+                  "password": "comp123",
+                  "name": "Kaitlyn",
+                  "type": "Student"
+              },
+              "kush":{
+                  "password": "comp123",
+                  "name": "Kush",
+                  "type": "student"
+              }
+          }
+      },
+      "1":{
+          "id": 1,
+          "name": "comp426_001",
+          "exam_dates": ["9/24/2020", "10/12/2020", "11/26/2020"], 
+          "students": {
+              "kaitlyn":{
+                  "password": "comp123",
+                  "name": "Kaitlyn",
+                  "type": "Student"
+              },
+              "kush":{
+                  "password": "comp123",
+                  "name": "Kush",
+                  "type": "student"
+              }
+          }
+      }
+    },
     "students": [
       "s1"
     ]
@@ -38,24 +179,167 @@
   "4": {
     "id": 4,
     "user": "kaitlyn",
-    "password": "comp123"
+    "password": "comp123",
+    "classes": {
+        "0":{
+          "id": 0,
+          "name": "comp110_001",
+          "exam_dates": ["9/24/2020", "10/13/2020", "11/26/2020"], 
+          "students": {
+              "kaitlyn":{
+                  "password": "comp123",
+                  "name": "Kaitlyn",
+                  "type": "Student"
+              },
+              "kush":{
+                  "password": "comp123",
+                  "name": "Kush",
+                  "type": "student"
+              }
+          }
+      },
+      "1":{
+          "id": 1,
+          "name": "comp426_001",
+          "exam_dates": ["9/24/2020", "10/12/2020", "11/26/2020"], 
+          "students": {
+              "kaitlyn":{
+                  "password": "comp123",
+                  "name": "Kaitlyn",
+                  "type": "Student"
+              },
+              "kush":{
+                  "password": "comp123",
+                  "name": "Kush",
+                  "type": "student"
+              }
+          }
+      }
+    }
   },
   "6": {
     "id": 6,
     "firstName": "Bob",
-    "user": "kaitlyn"
+    "user": "kaitlyn",
+    "classes": {
+        "0":{
+          "id": 0,
+          "name": "comp110_001",
+          "exam_dates": ["9/24/2020", "10/13/2020", "11/26/2020"], 
+          "students": {
+              "kaitlyn":{
+                  "password": "comp123",
+                  "name": "Kaitlyn",
+                  "type": "Student"
+              },
+              "kush":{
+                  "password": "comp123",
+                  "name": "Kush",
+                  "type": "student"
+              }
+          }
+      },
+      "1":{
+          "id": 1,
+          "name": "comp426_001",
+          "exam_dates": ["9/24/2020", "10/12/2020", "11/26/2020"], 
+          "students": {
+              "kaitlyn":{
+                  "password": "comp123",
+                  "name": "Kaitlyn",
+                  "type": "Student"
+              },
+              "kush":{
+                  "password": "comp123",
+                  "name": "Kush",
+                  "type": "student"
+              }
+          }
+      }
+    }
   },
   "7": {
     "id": 7,
     "firstName": "Billy",
-    "user": "kaitlyn"
+    "user": "kaitlyn",
+    "classes": {
+        "0":{
+          "id": 0,
+          "name": "comp110_001",
+          "exam_dates": ["9/24/2020", "10/13/2020", "11/26/2020"], 
+          "students": {
+              "kaitlyn":{
+                  "password": "comp123",
+                  "name": "Kaitlyn",
+                  "type": "Student"
+              },
+              "kush":{
+                  "password": "comp123",
+                  "name": "Kush",
+                  "type": "student"
+              }
+          }
+      },
+      "1":{
+          "id": 1,
+          "name": "comp426_001",
+          "exam_dates": ["9/24/2020", "10/12/2020", "11/26/2020"], 
+          "students": {
+              "kaitlyn":{
+                  "password": "comp123",
+                  "name": "Kaitlyn",
+                  "type": "Student"
+              },
+              "kush":{
+                  "password": "comp123",
+                  "name": "Kush",
+                  "type": "student"
+              }
+          }
+      }
+    }
   },
   "8": {
     "id": 8,
     "firstName": "Peter",
     "email": "petershe@live.unc.edu",
     "user": "petershe@live.unc.edu",
-    "classes": [],
+    "classes": {
+        "0":{
+          "id": 0,
+          "name": "comp110_001",
+          "exam_dates": ["9/24/2020", "10/13/2020", "11/26/2020"], 
+          "students": {
+              "kaitlyn":{
+                  "password": "comp123",
+                  "name": "Kaitlyn",
+                  "type": "Student"
+              },
+              "kush":{
+                  "password": "comp123",
+                  "name": "Kush",
+                  "type": "student"
+              }
+          }
+      },
+      "1":{
+          "id": 1,
+          "name": "comp426_001",
+          "exam_dates": ["9/24/2020", "10/12/2020", "11/26/2020"], 
+          "students": {
+              "kaitlyn":{
+                  "password": "comp123",
+                  "name": "Kaitlyn",
+                  "type": "Student"
+              },
+              "kush":{
+                  "password": "comp123",
+                  "name": "Kush",
+                  "type": "student"
+              }
+          }
+      }
+    },
     "students": []
   }
 }
