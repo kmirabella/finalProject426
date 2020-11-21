@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- <link rel="stylesheet" href="./homepage.css"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type = "text/html"> </script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js" type = "text/html"></script>
+    <title>Autocomplete</title>
+</head>    
+<body>
+
+<h1>Testing Autocomplete</h1>
+
+<form autocomplete="off">
+  <div class="autocomplete">
+    <input type="text" id="className"  placeholder="Enter Class">
+  </div>
+  <input type="submit">
+</form>
+
+<script>
+function autocomplete(myInput, classArray) {
+  myInput.addEventListener("input", function(e) {
+      minimizeOptions();
+      var val = this.value;
+      if (!val) { 
+          return;
+        }
+      
+      var a = document.createElement("DIV");
+      a.setAttribute("id", this.id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
+      this.parentNode.appendChild(a);
+
+      for ( var i = 0; i < classArray.length; i++) {
+        if (classArray[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+          var b = document.createElement("DIV");
+          b.innerHTML = "<strong>" + classArray[i].substr(0, val.length) + "</strong>";
+          b.innerHTML += classArray[i].substr(val.length);
+          b.innerHTML += "<input type='hidden' value='" + classArray[i] + "'>";
+          b.addEventListener("click", function(e) {
+              myInput.value = this.getElementsByTagName("input")[0].value;
+              minimizeOptions();
+          });
+          a.appendChild(b);
+        }
+      }
+  });
+ 
+   
+
+  function minimizeOptions(item) {
+    var classList = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < classList.length; i++) {
+      if (item != classList[i] && item !=myInput) {
+        classList[i].parentNode.removeChild(classList[i]);
+      }
+    }
+  }
+
+}
+
+//create array and call autocomplete function
+var classes = ["COMP426.001","COMP455.001","COMP455.002","COMP550.001","COMP550.002","COMP410.001","COMP410.002", "COMP411.001", "COMP411.002", "COMP411.003", "COMP411.004"];
+autocomplete(document.getElementById("className"), classes);
+
+</script>
+
+</body>
+</html>
+
