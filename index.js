@@ -14,6 +14,11 @@ export async function getDadJoke() {
     
 };
 
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
+
 const expressSession = require('express-session');
 app.use(expressSession({
     name: "groupSessionCookie",
@@ -235,8 +240,9 @@ app.delete('/student/:id', (req, res)=>{
     res.json(true); 
 });
 
-app.listen(process.env.PORT || 40146, function(){
-    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
-  });
-
+const port = 3030; 
+app.listen(port, ()=>{
+    console.log("this works: " + port)
+    
+})
 
