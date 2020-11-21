@@ -1,0 +1,32 @@
+{
+    "comp110.001":{
+        "exam dates": ["9/24/2020", "10/13/2020", "11/26/2020"], 
+        "Students": {
+            "kaitlyn":{
+                "password": "comp123",
+                "name": "Kaitlyn",
+                "type": "Student"
+            },
+            "kush":{
+                "password": "comp123",
+                "name": "Kush",
+                "type": "Professor"
+            }
+        }
+    },
+    "comp426.001":{
+        "exam dates": ["9/24/2020", "10/13/2020", "11/26/2020"], 
+        "Students": {
+            "kaitlyn":{
+                "password": "comp123",
+                "name": "Kaitlyn",
+                "type": "Student"
+            },
+            "kush":{
+                "password": "comp123",
+                "name": "Kush",
+                "type": "Professor"
+            }
+        }
+    }
+}
