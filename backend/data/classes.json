@@ -1,7 +1,9 @@
 {
-    "comp110.001":{
-        "exam dates": ["9/24/2020", "10/13/2020", "11/26/2020"], 
-        "Students": {
+    "0":{
+        "id": 0,
+        "name": "comp110_001",
+        "exam_dates": ["9/24/2020", "10/13/2020", "11/26/2020"], 
+        "students": {
             "kaitlyn":{
                 "password": "comp123",
                 "name": "Kaitlyn",
@@ -10,13 +12,15 @@
             "kush":{
                 "password": "comp123",
                 "name": "Kush",
-                "type": "Professor"
+                "type": "student"
             }
         }
     },
-    "comp426.001":{
-        "exam dates": ["9/24/2020", "10/12/2020", "11/26/2020"], 
-        "Students": {
+    "1":{
+        "id": 1,
+        "name": "comp426_001",
+        "exam_dates": ["9/24/2020", "10/12/2020", "11/26/2020"], 
+        "students": {
             "kaitlyn":{
                 "password": "comp123",
                 "name": "Kaitlyn",
@@ -25,7 +29,7 @@
             "kush":{
                 "password": "comp123",
                 "name": "Kush",
-                "type": "Professor"
+                "type": "student"
             }
         }
     }

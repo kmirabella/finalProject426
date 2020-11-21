@@ -90,7 +90,6 @@ async function handleSubmitSignup(e) {
             //     }
             // })
         } else {
-            //if checked student
             // await axios({
             //     method: "post",
             //     url: "https://WWW.URL.COM/signup",
