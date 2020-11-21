@@ -1,0 +1,32 @@
+{
+  "0": {
+    "id": 0
+  },
+  "1": {
+    "id": 1
+  },
+  "2": {
+    "id": 2
+  },
+  "3": {
+    "id": 3
+  },
+  "4": {
+    "id": 4,
+    "firstName": "Peter",
+    "lastName": "Shelley",
+    "email": "adfljasdflakdsjf@live.unc.edu",
+    "user": "adfljasdflakdsjf@live.unc.edu",
+    "password": "a2f$00Ps",
+    "classes": []
+  },
+  "5": {
+    "id": 5,
+    "firstName": "bahabhahaha",
+    "lastName": "Shelley",
+    "email": "studentSignUp@live.unc.edu",
+    "user": "studentSignUp@live;unc;edu",
+    "password": "boogie!!",
+    "classes": []
+  }
+}

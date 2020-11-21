@@ -49,5 +49,13 @@
     "id": 7,
     "firstName": "Billy",
     "user": "kaitlyn"
+  },
+  "8": {
+    "id": 8,
+    "firstName": "Peter",
+    "email": "petershe@live.unc.edu",
+    "user": "petershe@live.unc.edu",
+    "classes": [],
+    "students": []
   }
 }
