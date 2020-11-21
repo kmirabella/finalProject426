@@ -21,6 +21,7 @@ app.use(expressSession({
 //have to use file path 
 const Professor = require('./Professor.js');
 const Student = require('./Student.js');
+const Class = require('./Class.js');
 const login_data = require('data-store')({ path: process.cwd() + '/backend/data/users.json' });
 
 app.post('/login', (req, res) => {
@@ -277,6 +278,46 @@ app.listen(port, () => {
     console.log("this works: " + port)
 
 })
+
+// RESTFUL INTERFACE FOR Classes ===========================================
+// possibly unecessary method
+app.get('/classes', (req, res) => {
+    // if (req.session.user == undefined) {
+    //     // no one is logged in yet 
+    //     res.status(403).send("Unauthorized");
+    //     return;
+    // }
+
+    res.json(Class.getAllIDs());
+    return;
+});
+
+//Get a particular class's data
+app.get('/classes/:id', (req, res) => {
+    res.json(Class.findByID(req.params.id));
+    return;
+});
+
+//Professor deletes their class
+app.delete('/classes/:id', (req, res) => {
+    if (req.session.user == undefined) {
+        // no one is logged in yet 
+        console.log(req.session);
+        res.status(403).send("Unauthorized");
+        return;
+    }
+    let s = Student.findByID(req.params.id);
+    if (s == null) {
+        res.status(404).send("Student not found");
+        return;
+    }
+    if (req.session.user.type !== "Professor") {
+        res.status(403).send("Unauthorized");
+        return;
+    }
+    s.delete();
+    res.json(true);
+});
 
 
 
