@@ -38,21 +38,31 @@ async function handleSubmitSignup(e) {
         if ($("input[id='professor-radio']:checked").val() == "on") {
             //if checked professor
             console.log('about to send and create backend Prof. obj');
-        
+            await axios({
+                method: "post",
+                url: "https://192.168.0.158:3000/professor",
+                data: {
+                    "firstName": firstName,
+                    "lastName": lastName,
+                    "email": email,
+                    "password": pass,
+                    "classes": []
+                }
+            })
             console.log(`signed up new user: ${firstName} ${lastName}`)
         } else {
             //if checked student
-            // await axios({
-            //     method: "post",
-            //     url: "https://examscheduler2.netlify.app/student",
-            //     data: {
-            //         "firstName": firstName,
-            //         "lastName": lastName,
-            //         "email": email,
-            //         "password": pass,
-            //         "classes": []
-            //     }
-            // })
+            await axios({
+                method: "post",
+                url: "https://examscheduler2.netlify.app/student",
+                data: {
+                    "firstName": firstName,
+                    "lastName": lastName,
+                    "email": email,
+                    "password": pass,
+                    "classes": []
+                }
+            })
         }
 
     } else {

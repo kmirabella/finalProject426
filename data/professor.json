@@ -49,5 +49,25 @@
     "id": 7,
     "firstName": "Billy",
     "user": "kaitlyn"
+  },
+  "8": {
+    "id": 8,
+    "user": "kmp",
+    "password": "comp426"
+  },
+  "9": {
+    "id": 9,
+    "firstName": "kmp posted this",
+    "user": "kmp"
+  },
+  "10": {
+    "id": 10,
+    "user": "kaitlyn",
+    "password": "comp123"
+  },
+  "11": {
+    "id": 11,
+    "firstName": "Kush",
+    "user": "kaitlyn"
   }
 }
