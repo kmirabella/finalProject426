@@ -1,11 +1,3 @@
-// export async function getDadJoke() {
-//     const joke = await axios({
-//         method: 'get',
-//         url: 'https://icanhazdadjoke.com/',
-//         withCredentials: true,
-//     });
-//     console.log(joke);
-
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -149,6 +141,32 @@ app.put('/professor/:id', (req, res) => {
     p.password = password;
     p.classes = classes;
     p.students = students;
+
+    p.update();
+    res.json(p);
+
+});
+
+app.put('/professor/exams/:id', (req, res) => {
+    if (req.session.user == undefined) {
+        // no one is logged in yet 
+        res.status(403).send("Unauthorized");
+        return;
+    }
+
+    let p = Professor.findByID(req.params.id);
+    if (p == null) {
+        res.status(404).send("Professor not found");
+        return;
+    }
+    if (p.user != req.session.user) {
+        res.status(403).send("Unauthorized");
+        return;
+    }
+    
+    let classId = req.body.classId;
+    let examDates = req.body.examDates;
+    p.classes[classId].exam_dates = examDates;
 
     p.update();
     res.json(p);
@@ -316,6 +334,3 @@ app.delete('/classes/:id', (req, res) => {
     s.delete();
     res.json(true);
 });
-
-
-
