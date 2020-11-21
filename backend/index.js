@@ -47,7 +47,6 @@ app.post('/signup', (req, res) => {
     let last = req.body.lastName;
     let email = req.body.email;
     let password = req.body.password;
-
     /** Had to delimit emails so it could be used as id
      *  All user keys for cookies/stores login info are
      *  user's email . => ;
@@ -112,7 +111,6 @@ app.get('/professor/:id', (req, res) => {
         res.status(403).send("Unauthorized");
         return;
     }
-
     let p = Professor.findByID(req.params.id);
     if (p == null) {
         res.status(404).send("Professor not found");
