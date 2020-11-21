@@ -1,0 +1,60 @@
+.navbar {
+    overflow: hidden;
+    background-color: rgb(233, 85, 107);
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    padding: 15px;
+    text-decoration: none;
+  }
+  
+  .dropdown {
+    float: left;
+    overflow: hidden;
+  }
+  
+  .dropdown .name {
+    background-color: rgb(233, 85, 107);
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px; 
+    padding: 15px;
+    border: none;
+    outline: none;
+    margin: 0;
+  }
+  
+  .options {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0px 8px 8px 0px rgba(26, 26, 26, 0.139);
+  }
+  
+  .options a {
+    color: black;
+    float: none;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+  }
+  .navbar a:hover {
+    background-color: rgb(252, 172, 203);
+  }
+
+  .dropdown:hover .name {
+    background-color: rgb(252, 172, 203);
+  }
+
+  .options a:hover {
+    background-color: rgb(206, 203, 203);
+  }
+  
+  .dropdown:hover .options {
+    display: block;
+  }
+
