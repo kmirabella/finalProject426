@@ -48,9 +48,9 @@ async function handleSubmitSignup(e) {
     $('#email').removeClass('is-danger');
     $('#password').removeClass('is-danger');
     $('#confirm-password').removeClass('is-danger');
-    
+
     if (firstName == "") {
-        $('#first-name').addClass('is-danger'); 
+        $('#first-name').addClass('is-danger');
         return;
     }
     if (lastName == "") {
@@ -78,19 +78,22 @@ async function handleSubmitSignup(e) {
     if (pass == confirmedPassword) {
         // store our data here by creating a new professor or student object 
         if ($("input[id='professor-radio']:checked").val() == "on") {
-            // await axios({
-            //     method: "POST",
-            //     url: "https://WWW.URL.COM/signup",
-            //     data: {
-            //         "firstName": firstName,
-            //         "lastName": lastName,
-            //         "email": email,
-            //         "password": pass,
-            //         "professor": "true"
-            //     }
-            // })
+            let req = await axios({
+                method: "POST",
+                url: "https://WWW.URL.COM/signup",
+                data: {
+                    "firstName": firstName,
+                    "lastName": lastName,
+                    "email": email,
+                    "password": pass,
+                    "professor": "true"
+                }
+            })
+            if (req.body) {
+                window.location.replace("./professorView.html");
+            }
         } else {
-            // await axios({
+            // let req = await axios({
             //     method: "post",
             //     url: "https://WWW.URL.COM/signup",
             //     data: {
@@ -101,6 +104,9 @@ async function handleSubmitSignup(e) {
             //         "professor": "false"
             //     }
             // })
+            if (req.body) {
+                window.location.replace("./manage_classes.html");
+            }
         }
 
     } else {
