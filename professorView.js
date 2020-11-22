@@ -1,3 +1,81 @@
+let Professor = 
+{
+  "0": {
+        "id": 0,
+        "firstName": "Kaitlyn",
+        "lastName": "Mirabella",
+        "email": "test@unc.edu",
+        "user": "kaitlyn",
+        "classes": [
+            {
+                "id": 0,
+                "name": "comp110_001",
+                "exam_dates": [
+                    {
+                        "day": "9",
+                        "month": "24",
+                        "year": "2020"
+                    },
+                    {
+                        "day": "10",
+                        "month": "11",
+                        "year": "2020"
+                    },
+                    {
+                        "day": "11",
+                        "month": "26",
+                        "year": "2020"
+                    }
+                ], 
+                "students": [
+                    {
+                        "password": "comp123",
+                        "name": "Kaitlyn",
+                        "type": "Student"
+                    },
+                    {
+                        "password": "comp123",
+                        "name": "Kush",
+                        "type": "student"
+                    }
+                ]
+            },
+            {
+                "id": 1,
+                "name": "comp426_001",
+                "exam_dates": [
+                    {
+                        "day": "9",
+                        "month": "24",
+                        "year": "2020"
+                    },
+                    {
+                        "day": "10",
+                        "month": "11",
+                        "year": "2020"
+                    },
+                    {
+                        "day": "11",
+                        "month": "26",
+                        "year": "2020"
+                    }
+                ], 
+                "students": [
+                    {
+                        "password": "comp123",
+                        "name": "Kaitlyn",
+                        "type": "Student"
+                    },
+                    {
+                        "password": "comp123",
+                        "name": "Kush",
+                        "type": "student"
+                    }
+                ]
+            }
+        ]
+    }
+};
 
 let initializeCalendar =  ()=> {
     // Initialize random data for the demo
@@ -45,17 +123,99 @@ let initializeCalendar =  ()=> {
     calendarHeatmap.init(example_data, div_id, color, overview, print);
   };
 
-  const renderDropDownClasses = function(){
+  export const renderDropDownClasses = function(Professor){
+    for(let i =0; i < Professor[0].classes.length; i++){
+      let classDrop = Professor[0].classes[i].name;
+      $(".options").append(`<a href="">${classDrop}</a>`);
+    }
+    
+
     
   }
 
-  const loadProfessorView = async function () {
-    const $root = $('#root');
-    $("#root").on('click', '.classOption', initializeCalendar());
-    
-}
+  export const loadProfessorView = function(Professor) {    
+    const $root = $('#root');    
+    $("#root").on('mouseover','.dropdown', renderDropDownClasses(Professor));   
+ }
 
-
-  $(function () {
-    loadProfessorView();
+$(function () {
+  let Professor = 
+{
+  "0": {
+        "id": 0,
+        "firstName": "Kaitlyn",
+        "lastName": "Mirabella",
+        "email": "test@unc.edu",
+        "user": "kaitlyn",
+        "classes": [
+            {
+                "id": 0,
+                "name": "comp110_001",
+                "exam_dates": [
+                    {
+                        "day": "9",
+                        "month": "24",
+                        "year": "2020"
+                    },
+                    {
+                        "day": "10",
+                        "month": "11",
+                        "year": "2020"
+                    },
+                    {
+                        "day": "11",
+                        "month": "26",
+                        "year": "2020"
+                    }
+                ], 
+                "students": [
+                    {
+                        "password": "comp123",
+                        "name": "Kaitlyn",
+                        "type": "Student"
+                    },
+                    {
+                        "password": "comp123",
+                        "name": "Kush",
+                        "type": "student"
+                    }
+                ]
+            },
+            {
+                "id": 1,
+                "name": "comp426_001",
+                "exam_dates": [
+                    {
+                        "day": "9",
+                        "month": "24",
+                        "year": "2020"
+                    },
+                    {
+                        "day": "10",
+                        "month": "11",
+                        "year": "2020"
+                    },
+                    {
+                        "day": "11",
+                        "month": "26",
+                        "year": "2020"
+                    }
+                ], 
+                "students": [
+                    {
+                        "password": "comp123",
+                        "name": "Kaitlyn",
+                        "type": "Student"
+                    },
+                    {
+                        "password": "comp123",
+                        "name": "Kush",
+                        "type": "student"
+                    }
+                ]
+            }
+        ]
+    }
+};
+  loadProfessorView(Professor);    
 });

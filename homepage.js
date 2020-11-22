@@ -21,14 +21,14 @@ async function handleLogin(e) {
     }
 
     // try {
-    // await axios({
-    //     method: 'POST',
-    //     url: "http://WWW.URL.COM/login",
-    //     data: {
-    //         "user": email,
-    //         "password": password
-    //     }
-    // })
+    let req = await axios({
+        method: 'POST',
+        url: "https://comp426backend.herokuapp.com/login",
+        data: {
+            "user": email,
+            "password": password
+        }
+    })
 }
 
 async function handleSubmitSignup(e) {
@@ -80,7 +80,7 @@ async function handleSubmitSignup(e) {
         if ($("input[id='professor-radio']:checked").val() == "on") {
             let req = await axios({
                 method: "POST",
-                url: "https://WWW.URL.COM/signup",
+                url: "https://comp426backend.herokuapp.com/signup",
                 data: {
                     "firstName": firstName,
                     "lastName": lastName,
@@ -89,21 +89,22 @@ async function handleSubmitSignup(e) {
                     "professor": "true"
                 }
             })
+            console.log(req.body);
             if (req.body) {
                 window.location.replace("./professorView.html");
             }
         } else {
-            // let req = await axios({
-            //     method: "post",
-            //     url: "https://WWW.URL.COM/signup",
-            //     data: {
-            //         "firstName": firstName,
-            //         "lastName": lastName,
-            //         "email": email,
-            //         "password": pass,
-            //         "professor": "false"
-            //     }
-            // })
+            let req = await axios({
+                method: "post",
+                url: "https://comp426backend.herokuapp.com/signup",
+                data: {
+                    "firstName": firstName,
+                    "lastName": lastName,
+                    "email": email,
+                    "password": pass,
+                    "professor": "false"
+                }
+            })
             if (req.body) {
                 window.location.replace("./manage_classes.html");
             }
