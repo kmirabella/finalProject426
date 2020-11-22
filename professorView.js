@@ -1,81 +1,4 @@
-let Professor = 
-{
-  "0": {
-        "id": 0,
-        "firstName": "Kaitlyn",
-        "lastName": "Mirabella",
-        "email": "test@unc.edu",
-        "user": "kaitlyn",
-        "classes": [
-            {
-                "id": 0,
-                "name": "comp110_001",
-                "exam_dates": [
-                    {
-                        "day": "9",
-                        "month": "24",
-                        "year": "2020"
-                    },
-                    {
-                        "day": "10",
-                        "month": "11",
-                        "year": "2020"
-                    },
-                    {
-                        "day": "11",
-                        "month": "26",
-                        "year": "2020"
-                    }
-                ], 
-                "students": [
-                    {
-                        "password": "comp123",
-                        "name": "Kaitlyn",
-                        "type": "Student"
-                    },
-                    {
-                        "password": "comp123",
-                        "name": "Kush",
-                        "type": "student"
-                    }
-                ]
-            },
-            {
-                "id": 1,
-                "name": "comp426_001",
-                "exam_dates": [
-                    {
-                        "day": "9",
-                        "month": "24",
-                        "year": "2020"
-                    },
-                    {
-                        "day": "10",
-                        "month": "11",
-                        "year": "2020"
-                    },
-                    {
-                        "day": "11",
-                        "month": "26",
-                        "year": "2020"
-                    }
-                ], 
-                "students": [
-                    {
-                        "password": "comp123",
-                        "name": "Kaitlyn",
-                        "type": "Student"
-                    },
-                    {
-                        "password": "comp123",
-                        "name": "Kush",
-                        "type": "student"
-                    }
-                ]
-            }
-        ]
-    }
-};
+
 
 let initializeCalendar =  ()=> {
     // Initialize random data for the demo
@@ -139,6 +62,13 @@ let initializeCalendar =  ()=> {
  }
 
 $(function () {
+  // let findLoggedInProf = async function(id){
+  //   let req = await axios({
+  //     method: "get",
+  //     url: "https://comp426backend.herokuapp.com/professor" ,
+  //   })
+  //   console.log(req); 
+  // }
   let Professor = 
 {
   "0": {
