@@ -256,25 +256,7 @@ var calendarHeatmap = {
           .domain([-0.15 * max_value, max_value]);
         return color(d.total) || '#ff4500';
       })
-      .on('click', function(d) {
-        if (calendarHeatmap.in_transition) { return; }
-
-        // Set in_transition flag
-        calendarHeatmap.in_transition = true;
-
-        // Set selected date to the one clicked on
-        calendarHeatmap.selected = d;
-
-        // Hide tooltip
-        calendarHeatmap.hideTooltip();
-
-        // Remove all global overview related items and labels
-        calendarHeatmap.removeGlobalOverview();
-
-        // Redraw the chart
-        calendarHeatmap.overview = 'year';
-        calendarHeatmap.drawChart();
-      })
+      
       .style('opacity', 0)
       .on('mouseover', function(d) {
         if (calendarHeatmap.in_transition) { return; }
@@ -383,25 +365,7 @@ var calendarHeatmap = {
           .ease(d3.easeLinear)
           .style('opacity', 1);
       })
-      .on('click', function(d) {
-        if (calendarHeatmap.in_transition) { return; }
-
-        // Set in_transition flag
-        calendarHeatmap.in_transition = true;
-
-        // Set selected year to the one clicked on
-        calendarHeatmap.selected = { date: d };
-
-        // Hide tooltip
-        calendarHeatmap.hideTooltip();
-
-        // Remove all global overview related items and labels
-        calendarHeatmap.removeGlobalOverview();
-
-        // Redraw the chart
-        calendarHeatmap.overview = 'year';
-        calendarHeatmap.drawChart();
-      });
+      
   },
 
 
@@ -474,27 +438,7 @@ var calendarHeatmap = {
       .attr('fill', function(d) {
         return (d.total > 0) ? color(d.total) : 'transparent';
       })
-      .on('click', function(d) {
-        if (calendarHeatmap.in_transition) { return; }
-
-        // Don't transition if there is no data to show
-        if (d.total === 0) { return; }
-
-        calendarHeatmap.in_transition = true;
-
-        // Set selected date to the one clicked on
-        calendarHeatmap.selected = d;
-
-        // Hide tooltip
-        calendarHeatmap.hideTooltip();
-
-        // Remove all year overview related items and labels
-        calendarHeatmap.removeYearOverview();
-
-        // Redraw the chart
-        calendarHeatmap.overview = 'day';
-        calendarHeatmap.drawChart();
-      })
+      
       .on('mouseover', function(d) {
         if (calendarHeatmap.in_transition) { return; }
 
@@ -532,13 +476,13 @@ var calendarHeatmap = {
 
         // Construct tooltip
         var tooltip_html = '';
-        tooltip_html += '<div class="header"><strong>' + (d.total ? calendarHeatmap.formatTime(d.total) : 'No time') + ' tracked</strong></div>';
+        tooltip_html += '<div class="header"><strong>' + (d.total ? (d.total) : 'No') + ' students have an exam</strong></div>';
         tooltip_html += '<div>on ' + moment(d.date).format('dddd, MMM Do YYYY') + '</div><br>';
 
         // Add summary to the tooltip
         for (var i = 0; i < d.summary.length; i++) {
-          tooltip_html += '<div><span><strong>' + d.summary[i].name + '</strong></span>';
-          tooltip_html += '<span>' + calendarHeatmap.formatTime(d.summary[i].value) + '</span></div>';
+        //  tooltip_html += '<div><span><strong>' + d.summary[i].name + '</strong></span>';
+         // tooltip_html += '<span>' + calendarHeatmap.formatTime(d.summary[i].value) + '</span></div>';
         };
 
         // Calculate tooltip position
@@ -647,32 +591,8 @@ var calendarHeatmap = {
           .ease(d3.easeLinear)
           .style('opacity', 1);
       })
-      .on('click', function(d) {
-        if (calendarHeatmap.in_transition) { return; }
-
-        // Check month data
-        var month_data = calendarHeatmap.data.filter(function(e) {
-          return moment(d).startOf('month') <= moment(e.date) && moment(e.date) < moment(d).endOf('month');
-        });
-
-        // Don't transition if there is no data to show
-        if (!month_data.length) { return; }
-
-        // Set selected month to the one clicked on
-        calendarHeatmap.selected = { date: d };
-
-        calendarHeatmap.in_transition = true;
-
-        // Hide tooltip
-        calendarHeatmap.hideTooltip();
-
-        // Remove all year overview related items and labels
-        calendarHeatmap.removeYearOverview();
-
-        // Redraw the chart
-        calendarHeatmap.overview = 'month';
-        calendarHeatmap.drawChart();
-      });
+      
+        
 
     // Add day labels
     var day_labels = d3.timeDays(moment().startOf('week'), moment().endOf('week'));
@@ -721,7 +641,7 @@ var calendarHeatmap = {
       });
 
     // Add button to switch back to previous overview
-    calendarHeatmap.drawButton();
+   
   },
 
 
@@ -791,27 +711,7 @@ var calendarHeatmap = {
         return d.date;
       })
       .attr('offset', 0)
-      .on('click', function(d) {
-        if (calendarHeatmap.in_transition) { return; }
-
-        // Don't transition if there is no data to show
-        if (d.total === 0) { return; }
-
-        calendarHeatmap.in_transition = true;
-
-        // Set selected date to the one clicked on
-        calendarHeatmap.selected = d;
-
-        // Hide tooltip
-        calendarHeatmap.hideTooltip();
-
-        // Remove all month overview related items and labels
-        calendarHeatmap.removeMonthOverview();
-
-        // Redraw the chart
-        calendarHeatmap.overview = 'day';
-        calendarHeatmap.drawChart();
-      });
+      
 
     var item_width = (calendarHeatmap.settings.width - calendarHeatmap.settings.label_padding) / week_labels.length - calendarHeatmap.settings.gutter * 5;
     var itemScale = d3.scaleLinear()
@@ -855,7 +755,7 @@ var calendarHeatmap = {
         // Construct tooltip
         var tooltip_html = '';
         tooltip_html += '<div class="header"><strong>' + d.name + '</strong></div><br>';
-        tooltip_html += '<div><strong>' + (d.value ? calendarHeatmap.formatTime(d.value) : 'No time') + ' tracked</strong></div>';
+        tooltip_html += '<div><strong>' + (d.value ? (d.value) : 'No') + ' students have an exam</strong></div>';
         tooltip_html += '<div>on ' + moment(date).format('dddd, MMM Do YYYY') + '</div>';
 
         // Calculate tooltip position
@@ -940,32 +840,7 @@ var calendarHeatmap = {
           .ease(d3.easeLinear)
           .style('opacity', 1);
       })
-      .on('click', function(d) {
-        if (calendarHeatmap.in_transition) { return; }
-
-        // Check week data
-        var week_data = calendarHeatmap.data.filter(function(e) {
-          return d.startOf('week') <= moment(e.date) && moment(e.date) < d.endOf('week');
-        });
-
-        // Don't transition if there is no data to show
-        if (!week_data.length) { return; }
-
-        calendarHeatmap.in_transition = true;
-
-        // Set selected month to the one clicked on
-        calendarHeatmap.selected = { date: d };
-
-        // Hide tooltip
-        calendarHeatmap.hideTooltip();
-
-        // Remove all year overview related items and labels
-        calendarHeatmap.removeMonthOverview();
-
-        // Redraw the chart
-        calendarHeatmap.overview = 'week';
-        calendarHeatmap.drawChart();
-      });
+      
 
     // Add day labels
     calendarHeatmap.labels.selectAll('.label-day').remove();
@@ -1008,7 +883,7 @@ var calendarHeatmap = {
       });
 
     // Add button to switch back to previous overview
-    calendarHeatmap.drawButton();
+
   },
 
 
@@ -1075,27 +950,7 @@ var calendarHeatmap = {
         return d.date;
       })
       .attr('offset', 0)
-      .on('click', function(d) {
-        if (calendarHeatmap.in_transition) { return; }
-
-        // Don't transition if there is no data to show
-        if (d.total === 0) { return; }
-
-        calendarHeatmap.in_transition = true;
-
-        // Set selected date to the one clicked on
-        calendarHeatmap.selected = d;
-
-        // Hide tooltip
-        calendarHeatmap.hideTooltip();
-
-        // Remove all week overview related items and labels
-        calendarHeatmap.removeWeekOverview();
-
-        // Redraw the chart
-        calendarHeatmap.overview = 'day';
-        calendarHeatmap.drawChart();
-      });
+      
 
     var item_width = (calendarHeatmap.settings.width - calendarHeatmap.settings.label_padding) / week_labels.length - calendarHeatmap.settings.gutter * 5;
     var itemScale = d3.scaleLinear()
@@ -1139,7 +994,7 @@ var calendarHeatmap = {
         // Construct tooltip
         var tooltip_html = '';
         tooltip_html += '<div class="header"><strong>' + d.name + '</strong></div><br>';
-        tooltip_html += '<div><strong>' + (d.value ? calendarHeatmap.formatTime(d.value) : 'No time') + ' tracked</strong></div>';
+        tooltip_html += '<div><strong>' + (d.value ? (d.value) : 'No') + ' students have an exam</strong></div>';
         tooltip_html += '<div>on ' + moment(date).format('dddd, MMM Do YYYY') + '</div>';
 
         // Calculate tooltip position
@@ -1268,7 +1123,7 @@ var calendarHeatmap = {
       });
 
     // Add button to switch back to previous overview
-    calendarHeatmap.drawButton();
+  
   },
 
 
@@ -1348,11 +1203,7 @@ var calendarHeatmap = {
         if (calendarHeatmap.in_transition) { return; }
         calendarHeatmap.hideTooltip();
       })
-      .on('click', function(d) {
-        if (!!calendarHeatmap.handler && typeof calendarHeatmap.handler == 'function') {
-          calendarHeatmap.handler(d);
-        }
-      })
+      
       .transition()
       .delay(function() {
         return (Math.cos(Math.PI * Math.random()) + 1) * calendarHeatmap.settings.transition_duration;
@@ -1479,61 +1330,11 @@ var calendarHeatmap = {
       });
 
     // Add button to switch back to previous overview
-    calendarHeatmap.drawButton();
+    
   },
 
 
-  /**
-   * Draw the button for navigation purposes
-   */
-  drawButton: function() {
-    calendarHeatmap.buttons.selectAll('.button').remove();
-    var button = calendarHeatmap.buttons.append('g')
-      .attr('class', 'button button-back')
-      .style('opacity', 0)
-      .on('click', function() {
-        if (calendarHeatmap.in_transition) { return; }
-
-        // Set transition boolean
-        calendarHeatmap.in_transition = true;
-
-        // Clean the canvas from whichever overview type was on
-        if (calendarHeatmap.overview === 'year') {
-          calendarHeatmap.removeYearOverview();
-        } else if (calendarHeatmap.overview === 'month') {
-          calendarHeatmap.removeMonthOverview();
-        } else if (calendarHeatmap.overview === 'week') {
-          calendarHeatmap.removeWeekOverview();
-        } else if (calendarHeatmap.overview === 'day') {
-          calendarHeatmap.removeDayOverview();
-        }
-
-        // Redraw the chart
-        calendarHeatmap.history.pop();
-        calendarHeatmap.overview = calendarHeatmap.history.pop();
-        calendarHeatmap.drawChart();
-      });
-    button.append('circle')
-      .attr('cx', calendarHeatmap.settings.label_padding / 2.25)
-      .attr('cy', calendarHeatmap.settings.label_padding / 2.5)
-      .attr('r', calendarHeatmap.settings.item_size / 2);
-    button.append('text')
-      .attr('x', calendarHeatmap.settings.label_padding / 2.25)
-      .attr('y', calendarHeatmap.settings.label_padding / 2.5)
-      .attr('dy', function() {
-        return Math.floor(calendarHeatmap.settings.width / 100) / 3;
-      })
-      .attr('font-size', function() {
-        return Math.floor(calendarHeatmap.settings.label_padding / 3) + 'px';
-      })
-      .html('&#x2190;');
-    button.transition()
-      .duration(calendarHeatmap.settings.transition_duration)
-      .ease(d3.easeLinear)
-      .style('opacity', 1);
-  },
-
-
+ 
   /**
    * Transition and remove items and labels related to global overview
    */
@@ -1654,15 +1455,14 @@ var calendarHeatmap = {
     var minutes = Math.floor((seconds - (hours * 3600)) / 60);
     var time = '';
     if (hours > 0) {
-      time += hours === 1 ? '1 hour ' : hours + ' hours ';
+      time += hours === 1 ? '1 student ' : hours + ' students ';
     }
     if (minutes > 0) {
-      time += minutes === 1 ? '1 minute' : minutes + ' minutes';
+      time += minutes === 1 ? '1 student' : minutes + ' students';
     }
     if (hours === 0 && minutes === 0) {
-      time = Math.round(seconds) + ' seconds';
+      time = Math.round(seconds) + ' student';
     }
     return time;
   },
-
-};
+}
