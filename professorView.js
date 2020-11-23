@@ -83,6 +83,7 @@ let Professor =
   }
 };
 let dateObj; 
+let dateObj2;
 $(function () {
   // let professor = await axios({
   //   method: 'get',
@@ -90,8 +91,8 @@ $(function () {
   //   withCredentrials: true
 
   // });
-  let dictArr= []; 
   dateObj = {}; 
+  dateObj2 ={};
   Professor[0].classes.forEach((c) => {
     c.exam_dates.forEach((e) => {
       let date = $(`<td>${e.month}/${e.day}/${e.year}</td>`);
@@ -99,6 +100,7 @@ $(function () {
       let row = $("<tr></tr>");
       
       dateObj[e.month +"/"+ e.day +"/"+e.year ] = e.total; 
+      dateObj2[e.total] = e.month +"/"+ e.day +"/"+e.year ; 
 
       row.append(date).append(count);
       $("tbody").append(row);
@@ -118,11 +120,27 @@ $(function () {
   // $("#search-button").on('click', searchHandler);
   $("#date-header").on('click', sortByDate);
   $("#exam-header").on('click', sortByExam);
+  $("#search-button").on('click', searchDate);
+ 
 });
 
-// function searchHandler() {
+function searchDate() {
+  $("#search-field").removeClass('is-danger');
+  let value = $("#search-field").val();
+  if (value == "") {
+    $("#search-field").addClass('is-danger');
+    return;
+  }
+  let countDate = null
+  countDate = dateObj[value];
+  if (countDate ==null) {
+    $("tbody").replaceWith($(`<h2>No students have an exam on ${value}</h2>`));
+  }
+  let tableDate = $(`<tr><td>${value}</td><td>${countDate}</td></tr>`);
+   $("tbody").replaceWith(tableDate);
+  
 
-// }
+}
 
 function sortByDate(event) {
   let rows = $("tr:not(:first)").detach().toArray();
@@ -137,16 +155,15 @@ function sortByDate(event) {
   for (let x= 0; x < dates.length; x++) {
     dates[x] = parseInt(dates[x].join('')); 
   }
-
-  dates = dates.sort(); 
-
   for (let r= 0; r < dates.length; r++) {
     dates[r]=dates[r].toString(); 
     if(dates[r].length != 8){
       dates[r] = "0" + dates[r];
     }
   }
-  console.log(dates);
+  dates = dates.sort(); 
+
+  
   
   let dateString; 
   let dateArr= [];
@@ -156,7 +173,6 @@ function sortByDate(event) {
   }
   for(let u =0; u<dateArr.length; u++){
     let countDate = dateObj[dateArr[u]];
-    console.log(countDate); 
     let tableDate = $(`<tr><td>${dateArr[u]}</td><td>${countDate}</td></tr>`);
     $("tbody").append(tableDate);
   }
@@ -166,13 +182,19 @@ function sortByDate(event) {
 }
 
  function sortByExam() {
-  // let rows = $("tr:not(:first)").detach().toArray();
-  // let total = [];
-  // rows.forEach((r) => {
-  //   total.push($(r).find("td:first").text());
-  //   console.log(total);
-  // })
-
+  let rows = $("tr:not(:first)").detach().toArray();
+  let count = [];
+  rows.forEach((r) => {
+    count.push($(r).find("td:last").text());
+  })
+  
+  count.sort((a,b)=>(a-b));  
+  
+  for(let u =0; u<count.length; u++){
+    let date = dateObj2[count[u]];
+    let tableDate = $(`<tr><td>${date}</td><td>${count[u]}</td></tr>`);
+    $("tbody").append(tableDate);
+  }
  }
 
 async function signout() {
