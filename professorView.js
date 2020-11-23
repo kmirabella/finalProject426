@@ -203,3 +203,4 @@ async function signout() {
     url: "https://comp426backend.herokuapp.com/logout"
   })
 }
+

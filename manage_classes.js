@@ -1,47 +1,63 @@
 const $root = $("#root");
 let counter = 0;
-let class1 = {
-    name: "COMP110.001",
-    exam_dates: [new Date(2020, 10, 17), new Date(2020, 8, 30)]
-}
-let class2 = {
-    name: "COMP544.001",
-    exam_dates: [new Date(2020, 10, 13), new Date(2020, 9, 7)]
-}
-let classes = [class1, class2];
-
-let student = {
-    "id": 0,
-    "firstName": "Peter",
-    "lastName": "Shelley",
-    "email": "adfljasdflakdsjf@live.unc.edu",
-    "user": "adfljasdflakdsjf@live.unc.edu",
-    "password": "a2f$00Ps",
-    "classes": [0, 1],
-    "dates": [
-      {
-        "day": "9",
-        "month": "24",
-        "year": "2020"
-      },
-      {
-          "day": "10",
-          "month": "11",
-          "year": "2020"
-      },
-      {
-          "day": "11",
-          "month": "26",
-          "year": "2020"
-      }
-    ]
-  };
-
-let dates = student.dates;
+// let student = {
+//     "id": 0,
+//     "firstName": "Peter",
+//     "lastName": "Shelley",
+//     "email": "adfljasdflakdsjf@live.unc.edu",
+//     "user": "adfljasdflakdsjf@live.unc.edu",
+//     "password": "a2f$00Ps",
+//     "classes": [0, 1],
+//     "dates": [
+//       {
+//         "day": "9",
+//         "month": "24",
+//         "year": "2020"
+//       },
+//       {
+//           "day": "10",
+//           "month": "11",
+//           "year": "2020"
+//       },
+//       {
+//           "day": "11",
+//           "month": "26",
+//           "year": "2020"
+//       }
+//     ]
+//   };
 
 $(renderStudentView());
 
+async function getStudent(){
+    let req = await axios({
+        method: "GET",
+        url: "https://comp426backend.herokuapp.com/student",
+        withCredentials: true,
+    });
+    return await req.data;
+}
+
+async function getClassNames(class_ids){
+    let req = await axios({
+        method: "GET",
+        url: "https://comp426backend.herokuapp.com/student/classnames",
+        withCredentials: true,
+        body: {
+            "class_ids": class_ids
+        }
+    });
+    return await req.data;
+}
+
 async function renderStudentView() {
+    let student = await getStudent();
+    let classes = await getClassNames(student.classes);
+    console.log(classes);
+    console.log(student);
+
+    let dates = student.dates;
+
 
     // let req = await axios({
     //     method: "GET",
@@ -92,7 +108,7 @@ function renderAddDateForm() {
     let autocomplete = $(`<input class="input" type="text" id="month" placeholder="Enter Month as MM">
     <input class="input" type="text" id="day" placeholder="Enter Day as DD">
     <input class="input" type="text" id="year" placeholder="Enter Year as YYYY">`).css('width', '250px');
-    let addAutoButton = $(`<button type="button" class="button">+</button>`).on('click', addClassSelector);
+    let addAutoButton = $(`<button type="button" class="button">+</button>`).on('click', addDateSelector);
     form.append(autocomplete).append(addAutoButton);
     formView.append(form);
     
@@ -110,6 +126,10 @@ function addClassSelector() {
     console.log($(`#div-${counter}`)[0]);
     target.after(inputDiv);
     counter++;
+}
+
+function addDateSelector() {
+    alert("oh yea");
 }
 
 function renderClassView(c) {
