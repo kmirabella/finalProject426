@@ -29,7 +29,9 @@ async function handleLogin(e) {
             "password": password
         }, 
         withCredentials:true
-    })
+    });
+
+    alert(req.body);
 }
 
 async function handleSubmitSignup(e) {
