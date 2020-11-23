@@ -184,12 +184,7 @@ var calendarHeatmap = {
       var date = moment(d);
       return {
         'date': date,
-        'total': calendarHeatmap.data.reduce(function(prev, current) {
-          if (moment(current.date).year() === date.year()) {
-            prev += current.total;
-          }
-          return prev;
-        }, 0),
+        'total': 100,
         'summary': function() {
           var summary = calendarHeatmap.data.reduce(function(summary, d) {
             if (moment(d.date).year() === date.year()) {
@@ -440,6 +435,7 @@ var calendarHeatmap = {
       })
       
       .on('mouseover', function(d) {
+        console.log(d)
         if (calendarHeatmap.in_transition) { return; }
 
         // Pulsating animation
@@ -725,15 +721,14 @@ var calendarHeatmap = {
       .append('rect')
       .attr('class', 'item item-block-rect')
       .attr('x', function(d) {
-        var total = parseInt(d3.select(this.parentNode).attr('total'));
+        var total = 100;
         var offset = parseInt(d3.select(this.parentNode).attr('offset'));
         itemScale.domain([0, total]);
         d3.select(this.parentNode).attr('offset', offset + itemScale(d.value));
         return offset;
       })
       .attr('width', function(d) {
-        var total = parseInt(d3.select(this.parentNode).attr('total'));
-        itemScale.domain([0, total]);
+        var total = 100;
         return Math.max((itemScale(d.value) - calendarHeatmap.settings.item_gutter), 1)
       })
       .attr('height', function() {
@@ -964,14 +959,14 @@ var calendarHeatmap = {
       .append('rect')
       .attr('class', 'item item-block-rect')
       .attr('x', function(d) {
-        var total = parseInt(d3.select(this.parentNode).attr('total'));
+        var total = 100;
         var offset = parseInt(d3.select(this.parentNode).attr('offset'));
         itemScale.domain([0, total]);
         d3.select(this.parentNode).attr('offset', offset + itemScale(d.value));
         return offset;
       })
       .attr('width', function(d) {
-        var total = parseInt(d3.select(this.parentNode).attr('total'));
+        var total = 100;
         itemScale.domain([0, total]);
         return Math.max((itemScale(d.value) - calendarHeatmap.settings.item_gutter), 1)
       })
@@ -998,7 +993,7 @@ var calendarHeatmap = {
         tooltip_html += '<div>on ' + moment(date).format('dddd, MMM Do YYYY') + '</div>';
 
         // Calculate tooltip position
-        var total = parseInt(d3.select(this.parentNode).attr('total'));
+        var total = 100;
         itemScale.domain([0, total]);
         var x = parseInt(d3.select(this).attr('x')) + itemScale(d.value) / 4 + calendarHeatmap.settings.tooltip_width / 4;
         while (calendarHeatmap.settings.width - x < (calendarHeatmap.settings.tooltip_width + calendarHeatmap.settings.tooltip_padding * 3)) {
