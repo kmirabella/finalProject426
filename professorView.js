@@ -84,7 +84,6 @@ let Professor =
 };
 export const renderTable =()=>{
   location.reload();
-  
 }
 
 let dateObj; 
@@ -132,7 +131,7 @@ $(function () {
   $("#exam-header").on('click', sortByExam);
   $("#search-button").on('click', searchDate);
   $("#backButton").on('click', renderTable);
-  $("#busiestDays").one('click', renderBusiestDays)
+  renderBusiestDays();
 
 
   
@@ -142,7 +141,7 @@ $(function () {
  
 });
 export function renderBusiestDays() {
-  let rows = $("tr:not(:first)").detach().toArray();
+  let rows = $("tr:not(:first)").toArray();
   let count = [];
   rows.forEach((r) => {
     count.push($(r).find("td:last").text());
@@ -153,7 +152,7 @@ export function renderBusiestDays() {
   for(let u =count.length-1; u>count.length-6; u--){
     let date = dateObj2[count[u]];
     let tableDate = $(`<li>${date}</li>`);
-    $("ol").append(tableDate);
+    $("#busiest-list").append(tableDate);
   }
  
  
