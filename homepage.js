@@ -33,8 +33,6 @@ async function handleLogin(e) {
 
     if(req.data){ 
         window.location.replace("./professorView.html");
-    } else{
-        alert("Your username and/or password were not recognised");
     }
 }
 
@@ -97,7 +95,8 @@ async function handleSubmitSignup(e) {
                 }, 
                 withCredentials: true
             })
-            console.log(req.body);
+            console.log("request: "+req);
+            console.log("request_data: "+req.body);
             if (req.body) {
                 window.location.replace("./professorView.html");
             }
