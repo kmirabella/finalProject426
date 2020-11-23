@@ -82,6 +82,12 @@ let Professor =
     ]
   }
 };
+export const renderTable =()=>{
+location.reload();
+
+
+  
+}
 let dateObj; 
 let dateObj2;
 $(function () {
@@ -121,8 +127,13 @@ $(function () {
   $("#date-header").on('click', sortByDate);
   $("#exam-header").on('click', sortByExam);
   $("#search-button").on('click', searchDate);
+  $("#backButton").on('click', renderTable);
+  
  
 });
+ 
+
+
 
 function searchDate() {
   $("#search-field").removeClass('is-danger');
