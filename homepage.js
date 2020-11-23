@@ -96,7 +96,7 @@ async function handleSubmitSignup(e) {
             })
             console.log("request: "+req);
             console.log("request_data: "+req.data);
-            if (req.body) {
+            if (req.data) {
                 window.location.replace("./professorView.html");
             }
         } else {
@@ -112,7 +112,7 @@ async function handleSubmitSignup(e) {
                 },
                 withCredentials: true
             })
-            if (req.body) {
+            if (req.data) {
                 window.location.replace("./manage_classes.html");
             }
         }

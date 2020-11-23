@@ -55,7 +55,7 @@ let initializeCalendar =  ()=> {
  }
 
 
- async function getProfessors() {
+ async function getProfessor() {
   let professor = await axios({
       method: 'get',
       url: 'https://comp426backend.herokuapp.com/professor',
@@ -65,7 +65,7 @@ let initializeCalendar =  ()=> {
   return professor; 
 }
 
-let p = getProfessors()
+let p = getProfessor()
 console.log(p);
 
 /*
