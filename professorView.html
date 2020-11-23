@@ -15,7 +15,7 @@
 
 <body  >
   <nav class="navbar has-background-grey-lighter">
-    <img src="./logo2.png" alt = "logo" style="height: 100px">
+    <img onclick="location.href='./index.html'" src="./logo2.png" alt = "logo" style="height: 100px">
     <div class="navbar-end">
         <div class="navbar-item">
             <div class="buttons" style="font-family: Amatic SC">
@@ -31,6 +31,7 @@
   <section class="columns">
     <div class="column is-one-quarter ml-5 mr-3" id="search-functions">
       <!-- search bar for desired exam date -->
+      
 
       <div class="field has-addons">
         <div class="control">
@@ -62,57 +63,42 @@
 
 
 
-    <div class="dropdown is-active">
-      <div class="dropdown-trigger">
-        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-          <span>Month</span>
-          <span class="icon is-small">
-            <i class="fas fa-angle-down" aria-hidden="true"></i>
-          </span>
-        </button>
-      </div>
-      <div class="dropdown-menu" id="dropdown-menu" role="menu">
-        <div class="dropdown-content">
-          <a href="#" class="dropdown-item">
-            January
-          </a>
-          <a class="dropdown-item">
-            February
-          </a>
-          <a href="#" class="dropdown-item is-active">
-            March
-          </a>
-          <a href="#" class="dropdown-item">
-            April
-          </a>
-          <a href="#" class="dropdown-item">
-            May
-          </a>
-          <a class="dropdown-item">
-            June
-          </a>
-          <a class="dropdown-item">
-            July
-          </a>
-          <a class="dropdown-item">
-            August
-          </a>
-          <a class="dropdown-item">
-            September
-          </a>
-          <a class="dropdown-item">
-            October
-          </a>
-          <a class="dropdown-item">
-            November
-          </a>
-          <a class="dropdown-item">
-            December
-          </a>
-        </div>
-      </div>
-    </div>
+
   </section>
+
+  <section class="section">
+    <div class="container">
+        <div class="content">
+            <div class="columns">
+                <div class="column">
+                  <h1 class="title">Busiest Days</h1>
+                  <h5 class="subtitle has-text-white">Your students are busiest on these days</h5>
+                  <blockquote> 
+                    <ol type="1">
+                      <li> 03/12/2020</li>
+                      <li> 09/03/2020</li>
+                      <li> 11/13/2020</li>
+                      <li> 05/23/2020</li>
+                      <li> 07/17/2020</li>
+                    </ol>
+                  </blockquote>
+                </div>
+                <div class="column">
+                  <h1 class="title">Your Exam Dates</h1>
+                  <h5 class="subtitle has-text-white">These are your scheduled exams</h5>
+                  <blockquote>
+                    <ol type="1">
+                      <li> 08/14/2020</li>
+                      <li> 10/03/2020</li>
+                    </ol>
+                  </blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 
 
 </body>
