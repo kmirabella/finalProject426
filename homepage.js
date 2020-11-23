@@ -33,6 +33,8 @@ async function handleLogin(e) {
 
     if(req.data){ 
         window.location.replace("./professorView.html");
+    } else{
+        alert("Your username and/or password were not recognised");
     }
 }
 
