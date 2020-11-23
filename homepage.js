@@ -27,7 +27,8 @@ async function handleLogin(e) {
         data: {
             "user": email,
             "password": password
-        }
+        }, 
+        withCredentials:true
     })
 }
 
@@ -87,7 +88,8 @@ async function handleSubmitSignup(e) {
                     "email": email,
                     "password": pass,
                     "professor": "true"
-                }
+                }, 
+                withCredentials: true
             })
             console.log(req.body);
             if (req.body) {
@@ -103,7 +105,8 @@ async function handleSubmitSignup(e) {
                     "email": email,
                     "password": pass,
                     "professor": "false"
-                }
+                },
+                withCredentials: true
             })
             if (req.body) {
                 window.location.replace("./manage_classes.html");
