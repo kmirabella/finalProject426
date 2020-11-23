@@ -1,25 +1,28 @@
 
-let initializeCalendar =  ()=> {
+let initializeCalendar =  (date, total)=> {
+  //var finalDate = date;
+  var finalTotal = total;
     // Initialize random data for the demo
     var now = new Date (2020,10,25);
       var time_ago = new Date (2020, 7, 7)
-      var example_data = d3.timeDays(time_ago, now).map(function (dateElement, index) {
+      var example_data = d3.timeDays(time_ago, now).map(function (finalDate, index) {
+    var finalDate = date;
         return {
-        
-          date: dateElement,
+          date: finalDate,
           details: Array.apply(null, new Array(Math.floor(Math.random() * 15))).map(function(e, i, arr) {
             return {
               'name': '',
-              'date': dateElement,
+              'date': finalDate,
               'value': 3600 * ((arr.length - i) / 5) + Math.floor(Math.random() * 3600) * Math.round(Math.random() * (index / 365))
             }
           }),
           init: function () {
-            this.total = Math.random();
+            this.total = finalTotal;
             return this;
         }
       }.init();
     });
+    
 
     // Set the div target id
     var div_id = 'calendar';
@@ -66,22 +69,22 @@ let initializeCalendar =  ()=> {
 }
 
 let p = getProfessor()
-console.log(p);
+//console.log(p);
 
 
 
 function getPassedIn(Professor) {
+  let professor = Professor;
   //let professor = getProfessor()
-  let dateArray = professor.classes.examDates
-  for (let i = 0; i < dateArray.length; i++){
-    let date = new Date(professor.classes[i].exam_dates[i].year.parseInt(),professor.classes[i].exam_dates[i].month.parseInt(), professor.classes[i].exam_dates[i].day.parseInt());
-    let total = professor.classes[i].exam_dates[i].total;
-  }
-  
-  return (date, total);
-  
-}
 
+  for (let i = 0; i < professor[0].classes.length; i++){
+    for (let j = 0; j < professor[0].classes[i].exam_dates.length; j++) {
+      let date = new Date(parseInt(professor[0].classes[i].exam_dates[j].year),parseInt(professor[0].classes[i].exam_dates[j].month), parseInt(professor[0].classes[i].exam_dates[j].day));
+      let total = parseInt(professor[0].classes[i].exam_dates[j].total);
+      initializeCalendar(date, total);
+    }
+  }
+}
 
 
 
@@ -109,7 +112,7 @@ $(function () {
                 "exam_dates": [
                     {
                         "day": "9",
-                        "month": "24",
+                        "month": "2",
                         "year": "2020",
                         "total": "1"
                     },
@@ -121,7 +124,7 @@ $(function () {
                     },
                     {
                         "day": "11",
-                        "month": "26",
+                        "month": "3",
                         "year": "2020",
                         "total": "1"
                     }
@@ -144,19 +147,22 @@ $(function () {
                 "name": "comp426_001",
                 "exam_dates": [
                     {
-                        "day": "9",
-                        "month": "24",
-                        "year": "2020"
+                        "day": "19",
+                        "month": "4",
+                        "year": "2020",
+                        "total": "150"
                     },
                     {
-                        "day": "10",
-                        "month": "11",
-                        "year": "2020"
+                        "day": "30",
+                        "month": "8",
+                        "year": "2020",
+                        "total": "15"
                     },
                     {
-                        "day": "11",
-                        "month": "26",
-                        "year": "2020"
+                        "day": "2",
+                        "month": "1",
+                        "year": "2020",
+                        "total": "59"
                     }
                 ], 
                 "students": [
@@ -175,7 +181,7 @@ $(function () {
         ]
     }
 };
-let finalDate, finalTotal = (getPassedIn(Professor));
-
+initializeCalendar(new Date(2020,4,5),5);
+getPassedIn(Professor);
 loadProfessorView(Professor);    
 });
