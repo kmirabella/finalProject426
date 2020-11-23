@@ -58,8 +58,8 @@ let initializeCalendar =  ()=> {
  async function getProfessor() {
   let professor = await axios({
       method: 'get',
-      url: 'https://comp426backend.herokuapp.com/professor',
-      withCredentrials: true,
+      url: 'https://comp426backend.herokuapp.com/professor/0',
+      withCredentrials: true
 
   });
   return professor; 
@@ -68,19 +68,21 @@ let initializeCalendar =  ()=> {
 let p = getProfessor()
 console.log(p);
 
-/*
-function getExams() {
-  let allProfessors = getProfessors()
-  for(p in allProfessors) {
-      for (let i = 0; i < professor.classes.length; i++) {
-          return;
 
-      }
+
+function getPassedIn(Professor) {
+  //let professor = getProfessor()
+  let dateArray = professor.classes.examDates
+  for (let i = 0; i < dateArray.length; i++){
+    let date = new Date(professor.classes[i].exam_dates[i].year.parseInt(),professor.classes[i].exam_dates[i].month.parseInt(), professor.classes[i].exam_dates[i].day.parseInt());
+    let total = professor.classes[i].exam_dates[i].total;
   }
   
+  return (date, total);
   
 }
-*/
+
+
 
 
 
@@ -108,17 +110,20 @@ $(function () {
                     {
                         "day": "9",
                         "month": "24",
-                        "year": "2020"
+                        "year": "2020",
+                        "total": "1"
                     },
                     {
                         "day": "10",
                         "month": "11",
-                        "year": "2020"
+                        "year": "2020",
+                        "total": "3"
                     },
                     {
                         "day": "11",
                         "month": "26",
-                        "year": "2020"
+                        "year": "2020",
+                        "total": "1"
                     }
                 ], 
                 "students": [
@@ -170,5 +175,7 @@ $(function () {
         ]
     }
 };
-  loadProfessorView(Professor);    
+let finalDate, finalTotal = (getPassedIn(Professor));
+
+loadProfessorView(Professor);    
 });
