@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "professorView.html",
-    "start": "node professor.js"
+    "start": "node test.js"
   },
   "author": "",
   "license": "ISC",
