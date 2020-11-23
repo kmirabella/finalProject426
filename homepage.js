@@ -30,6 +30,9 @@ async function handleLogin(e) {
         }, 
         withCredentials:true
     })
+    if(req.data){ 
+        window.location.replace("./professorView.html");
+    }
 }
 
 async function handleSubmitSignup(e) {
