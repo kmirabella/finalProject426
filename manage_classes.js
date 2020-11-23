@@ -8,7 +8,36 @@ let class2 = {
     name: "COMP544.001",
     exam_dates: [new Date(2020, 10, 13), new Date(2020, 9, 7)]
 }
-let classes = [];
+let classes = [class1, class2];
+
+let student = {
+    "id": 0,
+    "firstName": "Peter",
+    "lastName": "Shelley",
+    "email": "adfljasdflakdsjf@live.unc.edu",
+    "user": "adfljasdflakdsjf@live.unc.edu",
+    "password": "a2f$00Ps",
+    "classes": [0, 1],
+    "dates": [
+      {
+        "day": "9",
+        "month": "24",
+        "year": "2020"
+      },
+      {
+          "day": "10",
+          "month": "11",
+          "year": "2020"
+      },
+      {
+          "day": "11",
+          "month": "26",
+          "year": "2020"
+      }
+    ]
+  };
+
+let dates = student.dates;
 
 $(renderStudentView());
 
@@ -25,17 +54,44 @@ async function renderStudentView() {
 
     //render student's existing classes and exam dates
     // assign global 'classes' var to the correct student's classes
+    $("#add-view").append(renderAddForm());
+    $("#add-view").append('<h1 class="has-text-centered title is-1">My Classes</h1><hr>');
     if (classes.length > 0) {
         classes.forEach((c) => renderClassView(c));
-    } else {
-        $("#add-view").append(renderAddForm());
-    }
+        //alert("this works");
+    } 
+    //else {
+    //     $("#add-view").append(renderAddForm());
+    // }
+
+    $("#add-view").append('<div class="break_box"></div>');
+
+    $("#add-date").append(renderAddDateForm());
+    $("#add-date").append('<h1 class="has-text-centered title is-1">My Exam Dates</h1><hr>');
+    if (dates.length > 0) {
+        dates.forEach((c) => renderDateView(c));
+        //alert("this works");
+    } 
 }
 
 function renderAddForm() {
     let formView = $('<div class="class_box" id="class_display"></div>');
     let form = $("<form id='add-info-form'></form>");
     let autocomplete = $(`<input class="input" type="text" id="className" placeholder="Enter Class">`).css('width', '700px');
+    let addAutoButton = $(`<button type="button" class="button">+</button>`).on('click', addClassSelector);
+    form.append(autocomplete).append(addAutoButton);
+    formView.append(form);
+    
+
+    return formView;
+}
+
+function renderAddDateForm() {
+    let formView = $('<div class="class_box" id="class_display"></div>');
+    let form = $("<form id='add-info-form'></form>");
+    let autocomplete = $(`<input class="input" type="text" id="month" placeholder="Enter Month as MM">
+    <input class="input" type="text" id="day" placeholder="Enter Day as DD">
+    <input class="input" type="text" id="year" placeholder="Enter Year as YYYY">`).css('width', '250px');
     let addAutoButton = $(`<button type="button" class="button">+</button>`).on('click', addClassSelector);
     form.append(autocomplete).append(addAutoButton);
     formView.append(form);
@@ -57,21 +113,26 @@ function addClassSelector() {
 }
 
 function renderClassView(c) {
-    let $classView = $('<div class="class_box" id="class-display"></div>');
-    let $className = $(`<h5 class="has-text-centered title is-1">${c.name}</h5>`);
-    $classView.append($className);
+    //let $classView = $('<div class="class_box" id="class-display"></div>');
+    let $className = $(`<h5 class="has-text-centered subtitle is-4">${c.name}</h5>`);
+    $("#add-view").append($className);
     //let buttons
-    if (c.exam_dates.length > 0) {
-        $className.append('<hr><h1 class="subtitle is-2">Exam Dates</h1>');
-        c.exam_dates.forEach((date) => {
-            //let $dateDiv = $('<div class="is-flex-direction-column is-align-content-space-between"></div>')
-            let $date = $(`<p class="subtitle is-5">${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}</p>`);
-            $className.append($date);
-        });
-    } else {
-        $className.append("<h3>There are no exam dates set up for this class.</h3>")
-    }
-    $root.append($classView);
+    // if (c.exam_dates.length > 0) {
+    //     $className.append('<hr><h1 class="subtitle is-2">Exam Dates</h1>');
+    //     c.exam_dates.forEach((date) => {
+    //         //let $dateDiv = $('<div class="is-flex-direction-column is-align-content-space-between"></div>')
+    //         let $date = $(`<p class="subtitle is-5">${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}</p>`);
+    //         $className.append($date);
+    //     });
+    // } else {
+    //     $className.append("<h3>There are no exam dates set up for this class.</h3>")
+    // }
+    //$root.append($classView);
+}
+
+function renderDateView(c) {
+    let $className = $(`<h5 class="has-text-centered subtitle is-4">${c.month}/${c.day}/${c.year}</h5>`);
+    $("#add-date").append($className);
 }
 
 let $classNameDropdown = $(`<input type="text" id="className" placeholder="Enter Class"><hr>`);
