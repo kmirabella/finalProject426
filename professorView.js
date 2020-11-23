@@ -18,7 +18,7 @@ let Professor =
             "total": "12"
           },
           {
-            "day": "10",
+            "day": "09",
             "month": "11",
             "year": "2020",
             "total": "92"
@@ -138,11 +138,16 @@ function sortByDate(event) {
     dates[x] = parseInt(dates[x].join('')); 
   }
 
-  
   dates = dates.sort(); 
+
   for (let r= 0; r < dates.length; r++) {
     dates[r]=dates[r].toString(); 
+    if(dates[r].length != 8){
+      dates[r] = "0" + dates[r];
+    }
   }
+  console.log(dates);
+  
   let dateString; 
   let dateArr= [];
   for (let i = 0; i < dates.length; i++) {
