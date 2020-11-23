@@ -12,8 +12,8 @@ let Professor =
         "name": "comp110_001",
         "exam_dates": [
           {
-            "day": "9",
-            "month": "24",
+            "day": "09",
+            "month": "03",
             "year": "2020",
             "total": "12"
           },
@@ -25,7 +25,7 @@ let Professor =
           },
           {
             "day": "11",
-            "month": "26",
+            "month": "02",
             "year": "2020",
             "total": "128"
           }
@@ -48,8 +48,8 @@ let Professor =
         "name": "comp426_001",
         "exam_dates": [
           {
-            "day": "9",
-            "month": "24",
+            "day": "12",
+            "month": "09",
             "year": "2020",
             "total": "3"
           },
@@ -61,7 +61,7 @@ let Professor =
           },
           {
             "day": "11",
-            "month": "26",
+            "month": "04",
             "year": "2020",
             "total": "198"
           }
@@ -82,7 +82,7 @@ let Professor =
     ]
   }
 };
-
+let dateObj; 
 $(function () {
   // let professor = await axios({
   //   method: 'get',
@@ -90,12 +90,16 @@ $(function () {
   //   withCredentrials: true
 
   // });
+  let dictArr= []; 
+  dateObj = {}; 
   Professor[0].classes.forEach((c) => {
     c.exam_dates.forEach((e) => {
-      console.log(c);
       let date = $(`<td>${e.month}/${e.day}/${e.year}</td>`);
       let count = $(`<td>${e.total}</td>`);
       let row = $("<tr></tr>");
+      
+      dateObj[e.month +"/"+ e.day +"/"+e.year ] = e.total; 
+
       row.append(date).append(count);
       $("tbody").append(row);
     })
@@ -113,7 +117,7 @@ $(function () {
 
   // $("#search-button").on('click', searchHandler);
   $("#date-header").on('click', sortByDate);
-  // $("#exam-header").on('click', sortByExam);
+  $("#exam-header").on('click', sortByExam);
 });
 
 // function searchHandler() {
@@ -130,17 +134,41 @@ function sortByDate(event) {
   for (let i = 0; i < dates.length; i++) {
     dates[i] = dates[i].split('/');
   }
-  dates.sort((a, b) => a.valueOf() - b.valueOf()); s
-  console.log(dates);
+  for (let x= 0; x < dates.length; x++) {
+    dates[x] = parseInt(dates[x].join('')); 
+  }
 
+  
+  dates = dates.sort(); 
+  for (let r= 0; r < dates.length; r++) {
+    dates[r]=dates[r].toString(); 
+  }
+  let dateString; 
+  let dateArr= [];
+  for (let i = 0; i < dates.length; i++) {
+    dateString =dates[i].charAt(0) + dates[i].charAt(1) + "/" + dates[i].charAt(2) +dates[i].charAt(3)+"/" +dates[i].charAt(4) +dates[i].charAt(5)+dates[i].charAt(6)+dates[i].charAt(7);
+    dateArr.push(dateString);
+  }
+  for(let u =0; u<dateArr.length; u++){
+    let countDate = dateObj[dateArr[u]];
+    console.log(countDate); 
+    let tableDate = $(`<tr><td>${dateArr[u]}</td><td>${countDate}</td></tr>`);
+    $("tbody").append(tableDate);
+  }
   // $("tbody").forEach((c) => {
   //   console.log(c);
   // })
 }
 
-// function sortByExam() {
+ function sortByExam() {
+  // let rows = $("tr:not(:first)").detach().toArray();
+  // let total = [];
+  // rows.forEach((r) => {
+  //   total.push($(r).find("td:first").text());
+  //   console.log(total);
+  // })
 
-// }
+ }
 
 async function signout() {
   await axios({
