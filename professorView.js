@@ -1,27 +1,6 @@
 
-let initializeCalendar =  (date, total)=> {
-  //var finalDate = date;
-  var finalTotal = total;
-    // Initialize random data for the demo
-    var now = new Date (2020,10,25);
-      var time_ago = new Date (2020, 7, 7)
-      var example_data = d3.timeDays(time_ago, now).map(function (finalDate, index) {
-    var finalDate = date;
-        return {
-          date: finalDate,
-          details: Array.apply(null, new Array(Math.floor(Math.random() * 15))).map(function(e, i, arr) {
-            return {
-              'name': '',
-              'date': finalDate,
-              'value': 3600 * ((arr.length - i) / 5) + Math.floor(Math.random() * 3600) * Math.round(Math.random() * (index / 365))
-            }
-          }),
-          init: function () {
-            this.total = finalTotal;
-            return this;
-        }
-      }.init();
-    });
+let initializeCalendar =  (finalArray)=> {
+
     
 
     // Set the div target id
@@ -38,8 +17,10 @@ let initializeCalendar =  (date, total)=> {
       console.log(val);
     };
 
+   // console.log(finalArray);
     // Initialize calendar heatmap
-    calendarHeatmap.init(example_data, div_id, color, overview, print);
+    calendarHeatmap.init(finalArray, div_id, color, overview, print);
+    
   };
 
   export const renderDropDownClasses = function(Professor){
@@ -71,19 +52,36 @@ let initializeCalendar =  (date, total)=> {
 let p = getProfessor()
 //console.log(p);
 
-
+let finalArray = [];
+let finalObj = {};
 
 function getPassedIn(Professor) {
   let professor = Professor;
   //let professor = getProfessor()
-
+  
   for (let i = 0; i < professor[0].classes.length; i++){
     for (let j = 0; j < professor[0].classes[i].exam_dates.length; j++) {
       let date = new Date(parseInt(professor[0].classes[i].exam_dates[j].year),parseInt(professor[0].classes[i].exam_dates[j].month), parseInt(professor[0].classes[i].exam_dates[j].day));
-      let total = parseInt(professor[0].classes[i].exam_dates[j].total);
-      initializeCalendar(date, total);
+      let total = professor[0].classes[i].exam_dates[j].total;
+      finalObj = {
+        "date": date,
+        "details": [{
+          "name": "",
+          "date": "",
+          "value": "" 
+        }],
+        "summary": [{
+          "name": 'poop',
+          "value": ''
+        }],
+        "total": total,
+      }
+      finalArray.push(finalObj);
+      console.log(finalObj);
     }
   }
+  //initializeCalendar(finalArray);
+
 }
 
 
@@ -185,3 +183,5 @@ initializeCalendar(new Date(2020,4,5),5);
 getPassedIn(Professor);
 loadProfessorView(Professor);    
 });
+
+
