@@ -31,7 +31,9 @@ async function handleLogin(e) {
         withCredentials:true
     });
 
-    console.log(req);
+    if(req.data){ 
+        window.location.replace("./professorView.html");
+    }
 }
 
 async function handleSubmitSignup(e) {
