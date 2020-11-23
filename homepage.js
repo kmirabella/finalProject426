@@ -31,7 +31,7 @@ async function handleLogin(e) {
         withCredentials:true
     });
 
-    alert(req);
+    console.log(req);
 }
 
 async function handleSubmitSignup(e) {
