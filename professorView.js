@@ -83,14 +83,14 @@ let Professor =
   }
 };
 export const renderTable =()=>{
-location.reload();
-
-
+  location.reload();
   
 }
+
 let dateObj; 
 let dateObj2;
 $(function () {
+
   // let professor = await axios({
   //   method: 'get',
   //   url: 'https://comp426backend.herokuapp.com/professor/:id',
@@ -112,7 +112,11 @@ $(function () {
       $("tbody").append(row);
     })
   })
-  $("tbody")
+
+
+
+
+
 
   $("#signout-button").on('click', signout);
   // let findLoggedInProf = async function(id){
@@ -128,10 +132,34 @@ $(function () {
   $("#exam-header").on('click', sortByExam);
   $("#search-button").on('click', searchDate);
   $("#backButton").on('click', renderTable);
+  $("#busiestDays").one('click', renderBusiestDays)
+
+
+  
+
+
   
  
 });
+export function renderBusiestDays() {
+  let rows = $("tr:not(:first)").detach().toArray();
+  let count = [];
+  rows.forEach((r) => {
+    count.push($(r).find("td:last").text());
+  })
+  
+  count.sort((a,b)=>(a-b));  
+  
+  for(let u =count.length-1; u>count.length-6; u--){
+    let date = dateObj2[count[u]];
+    let tableDate = $(`<li>${date}</li>`);
+    $("ol").append(tableDate);
+  }
  
+ 
+
+}
+
 
 
 
