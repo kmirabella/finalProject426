@@ -2,53 +2,43 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./professor.css">
-    <script src ="./ProfessorView.js" type = "module"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./professor.css">
+  <script src="./ProfessorView.js" type="module"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="node_modules/bulma/css/bulma.css">
 
-    <title>Professor View</title>
+  <title>Professor View</title>
 </head>
 
 <body>
-  <div class="navbar">
-    <a href="/index.html">Home</a>
+  <nav class="navbar has-background-grey-lighter block">
+    <img src="./logo2.png" alt="logo" style="height: 100px">
+  </nav>
+  <section class="columns">
+    <div class="column is-one-quarter ml-5 mr-3" id="search-functions">
+      <!-- search bar for desired exam date -->
+      <label for="search">Search for your desired exam date</label>
+      <input type="text" class="search input" placeholder="MM/DD/YYYY">
+      <button id="search-button" class="button">🔍</button>
+    </div>
+    <div class="column is-one-half">
+      <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+        <thead>
+          <tr>
+            <th id="date-header" title="Date">Date</th>
+            <th id="exam-header" title="Exam Count">Exam Count</th>
+          </tr>
+        </thead>
+        <tbody>
 
-    <!-- add more links above -->
-    <div class="dropdown">
-      <button class="name">Class 
-        <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="options">
-       
-      </div>
-    </div> 
-
-    <div class="dropdown">
-      <button class="name">View
-        <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="options">
-        <a href="calendarView/week.html">Week</a>
-        <a href="calendarView/month.html">Month</a>
-        <a href="calendarView/semester.html">Semester</a>
-      </div>
-    </div> 
-
-  </div>
-
-  
-
-  <div id="calendar"></div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js" charset="utf-8"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.10.2/d3.min.js" charset="utf-8"></script>
-  <script src="calendar.js"></script>
-
-
- 
+        </tbody>
+      </table>
+    </div>
+    <div class="column is-one-quarter"></div>
+  </section>
 
 
 </body>
