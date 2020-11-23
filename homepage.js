@@ -96,7 +96,7 @@ async function handleSubmitSignup(e) {
                 withCredentials: true
             })
             console.log("request: "+req);
-            console.log("request_data: "+req.body);
+            console.log("request_data: "+req.data);
             if (req.body) {
                 window.location.replace("./professorView.html");
             }
