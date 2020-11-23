@@ -18,19 +18,20 @@
     </nav>
     <div id="root">
         <h1 class="title has-text-centered">Welcome to your course dashboard!</h1>
-        <!-- 
-             <div class="class_box" id="class_display">
-                <h1>COMP426</h1>
-                <hr>
-                <h2>Exam Dates</h2>
-                <p>11/01/2020</p>
-                <p>9/12/2020</p>
-                <p>10/08/2020</p>
-                <p>8/24/2020</p>
-                <button type="submit">edit</button>
-                <button type="submit">delete class</button>
-            </div>
-            --->
+
+        <div id="classes-view"></div>
+        <div class="class_box" id="class_display">
+            <h1>COMP426</h1>
+            <hr>
+            <h2>Exam Dates</h2>
+            <p>11/01/2020</p>
+            <p>9/12/2020</p>
+            <p>10/08/2020</p>
+            <p>8/24/2020</p>
+            <button type="submit">edit</button>
+            <button type="submit">delete class</button>
+        </div>
+        -
         <!-- <div class="class_box" id="class_edit">
             <h1>Enter Course</h1>
             <input value="COMP426.001" maxlength="11">
@@ -57,8 +58,9 @@
             <p>8/24/2020</p><button type="submit" id="edit_button">edit</button><button type="submit">delete
                 class</button>
         </div> -->
-        <div class="new_class_button_container"><button id="new-class-button" class="button is-info is-light"
-                type="submit">+ new class</button></div>
+        <div class="new_class_button_container">
+            <button id="new-class-button" class="button is-info is-light" type="button">+ new class</button>
+        </div>
     </div>
     <script src="manage_classes.js" type="module"></script>
 </body>

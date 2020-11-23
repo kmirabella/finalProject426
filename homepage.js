@@ -94,7 +94,8 @@ async function handleSubmitSignup(e) {
                 }, 
                 withCredentials: true
             })
-            console.log(req.body);
+            console.log("request: "+req);
+            console.log("request_data: "+req.data);
             if (req.body) {
                 window.location.replace("./professorView.html");
             }
@@ -121,3 +122,47 @@ async function handleSubmitSignup(e) {
         $('#confirm-password').addClass('is-danger');
     }
 }
+
+
+/** CLASS OBJC
+ *  "id": 0,
+        "name": "comp110_001",
+        "exam_dates": ["9/24/2020", "10/13/2020", "11/26/2020"],
+        "students": {
+            "kaitlyn":{
+                "password": "comp123",
+                "name": "Kaitlyn",
+                "type": "Student"
+            },
+            "kush":{
+                "password": "comp123",
+                "name": "Kush",
+                "type": "student"
+            }
+        }
+
+    {
+        name: "kaitlyn",
+        classes: [{455}, {426}],
+        exams: [date1, date2]
+    }
+    {   
+        name: "peter",
+        classes: [{455}, {426}],
+        exams: [date2, date4]
+    }
+
+
+    examCounter: {
+        date1: 1,
+        date2: 2,
+        date3: 0
+    }
+
+    455: {
+        exams: [date1, date2, date3]
+    }
+    426: {
+        exams: [dateA, date2, dateB]
+    }
+ */
