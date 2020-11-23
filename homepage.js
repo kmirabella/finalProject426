@@ -27,9 +27,13 @@ async function handleLogin(e) {
         data: {
             "user": email,
             "password": password
-        },
-        withCredentials: true
-    })
+        }, 
+        withCredentials:true
+    });
+
+    if(req.data){ 
+        window.location.replace("./professorView.html");
+    }
 }
 
 async function handleSubmitSignup(e) {
@@ -91,7 +95,9 @@ async function handleSubmitSignup(e) {
                 }, 
                 withCredentials: true
             })
-            if (req.data) {
+            console.log("request: "+req);
+            console.log("request_data: "+req.data);
+            if (req.body) {
                 window.location.replace("./professorView.html");
             }
         } else {
