@@ -95,6 +95,7 @@ let dateObj;
 let dateObj2;
 $(async function () {
 
+  console.log("it works");
   let professor = await axios({
     method: 'get',
     url: 'https://comp426backend.herokuapp.com/professor/',
