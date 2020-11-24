@@ -10,11 +10,12 @@ body {
   }
   
   .homepage{
-    height: 650px; 
     background-image: url("frontPage2.png");
     background-repeat: no-repeat;
-  background-size: 100%;
-  
+    background-position: center;
+    padding-top: 300px; 
+    background-color:  #209cee;
+
   }
   
   #loginSignupButton_Text {

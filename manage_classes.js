@@ -67,7 +67,7 @@ async function renderStudentView() {
             withCredentials: true,
             body: {
                 "class_ids": student.classes,
-                "dates": student.dates
+                "dates": student.dates,
             }
         });
     }
@@ -75,7 +75,7 @@ async function renderStudentView() {
     function renderAddForm() {
         let formView = $('<div class="class_box" id="class_display"></div>');
         let form = $("<form id='add-info-form'></form>");
-        let autocomplete = $(`<input class="input" type="text" id="className" placeholder="Enter Class">`).css('width', '700px');
+        let autocomplete = $(`<input class="input" type="text" id="className" placeholder="Enter Class Code">`).css('width', '700px');
         let addAutoButton = $(`<button type="button" class="button">+</button>`).on('click', addClassSelector);
         form.append(autocomplete).append(addAutoButton);
         formView.append(form);
@@ -98,21 +98,20 @@ async function renderStudentView() {
         return formView;
     }
 
-    function addClassSelector() {
-        // console.log(counter);
-        // let target = $(`#div-${counter}`);
-        // let inputDiv = $(`<div id='div-${counter}' class='is-flex-direction-row control field'></div>`);
-        // let autocomplete = $(`<input class="input" type="text" id="className" placeholder="Enter Class">`).css('width', '500px');
-        // let addAutoButton = $(`<button type="button" class="button">+</button>`).on('click', addClassSelector);
-        // inputDiv.append(autocomplete).append(addAutoButton);
-        // console.log($(`#div-${counter}`)[0]);
-        // target.after(inputDiv);
-        // counter++;
+    async function addClassSelector() {
         let className = {
-            "name": $("#className").val()
+            "code": $("#className").val()
         };
         console.log(className);
         renderClassView(className);
+
+        await axios({
+            method: "PUT",
+            url: `https://comp426backend.herokuapp.com/student/${student.id}/create`,
+            body: {
+                "classCode": className.code
+            }
+        })
     }
 
     function addDateSelector() {
