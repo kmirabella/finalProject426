@@ -136,15 +136,8 @@ $(function () {
 
 
   $("#signout-button").on('click', signout);
-  // let findLoggedInProf = async function(id){
-  //   let req = await axios({
-  //     method: "get",
-  //     url: "https://comp426backend.herokuapp.com/professor" ,
-  //   })
-  //   console.log(req); 
-  // }
 
-  // $("#search-button").on('click', searchHandler);
+
   $("#date-header").on('click', sortByDate);
   $("#exam-header").on('click', sortByExam);
   $("#search-button").on('click', searchDate);
@@ -162,11 +155,7 @@ async function submitCreateClass(e) {
     $("div.class_box").append($("<h2 id='error-message'>Error</h2>"));
     return;
   }
-  // await axios({
-  //     method: "PUT",
-  //     url: "https://comp426backend.herokuapp.com/professor/createclass/:id",
 
-  // })
   window.location.href = "./professorView.html"
 }
 
@@ -239,9 +228,7 @@ function sortByDate(event) {
     let tableDate = $(`<tr><td>${dateArr[u]}</td><td>${countDate}</td></tr>`);
     $("tbody").append(tableDate);
   }
-  // $("tbody").forEach((c) => {
-  //   console.log(c);
-  // })
+ 
 }
 
 function sortByExam() {
