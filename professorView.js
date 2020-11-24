@@ -93,16 +93,22 @@ export const renderTable = () => {
 
 let dateObj;
 let dateObj2;
-$(async function () {
 
-  console.log("it works");
+async function getProfId(){
   let professor = await axios({
     method: 'get',
     url: 'https://comp426backend.herokuapp.com/professor/',
     withCredentrials: true
   });
+  return await professor;
+}
 
-  await console.log(professor);
+$(function () {
+
+  console.log("it works");
+  console.log(getProfId());
+  
+
   dateObj = {};
   dateObj2 = {};
   Professor[0].classes.forEach((c) => {
