@@ -78,7 +78,7 @@ let Professor =
           },
           {
             "day": "08",
-            "month": "11",
+            "month": "08",
             "year": "2020",
             "total": "250"
           },
@@ -90,13 +90,13 @@ let Professor =
           },
           {
             "day": "06",
-            "month": "23",
+            "month": "01",
             "year": "2020",
             "total": "30"
           },
           {
             "day": "04",
-            "month": "30",
+            "month": "03",
             "year": "2020",
             "total": "240"
           },
