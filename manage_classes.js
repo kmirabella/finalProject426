@@ -50,8 +50,6 @@ async function renderStudentView() {
     //     $("#add-view").append(renderAddForm());
     // }
 
-    $("#add-view").append('<div class="break_box"></div>');
-
     $("#add-date").append(renderAddDateForm());
     $("#add-date").append('<h1 class="has-text-centered title is-1">My Exam Dates</h1><hr>');
     if (dates.length > 0) {
@@ -101,15 +99,20 @@ async function renderStudentView() {
     }
 
     function addClassSelector() {
-        console.log(counter);
-        let target = $(`#div-${counter}`);
-        let inputDiv = $(`<div id='div-${counter}' class='is-flex-direction-row control field'></div>`);
-        let autocomplete = $(`<input class="input" type="text" id="className" placeholder="Enter Class">`).css('width', '500px');
-        let addAutoButton = $(`<button type="button" class="button">+</button>`).on('click', addClassSelector);
-        inputDiv.append(autocomplete).append(addAutoButton);
-        console.log($(`#div-${counter}`)[0]);
-        target.after(inputDiv);
-        counter++;
+        // console.log(counter);
+        // let target = $(`#div-${counter}`);
+        // let inputDiv = $(`<div id='div-${counter}' class='is-flex-direction-row control field'></div>`);
+        // let autocomplete = $(`<input class="input" type="text" id="className" placeholder="Enter Class">`).css('width', '500px');
+        // let addAutoButton = $(`<button type="button" class="button">+</button>`).on('click', addClassSelector);
+        // inputDiv.append(autocomplete).append(addAutoButton);
+        // console.log($(`#div-${counter}`)[0]);
+        // target.after(inputDiv);
+        // counter++;
+        let className ={
+            "name": $("#className").val()
+        };
+        console.log(className);
+        renderClassView(className);
     }
 
     function addDateSelector() {
@@ -128,7 +131,8 @@ async function renderStudentView() {
             "year": year
         };
 
-        updateDates(newDate);
+        //updateDates(newDate);
+        renderDateView(newDate);
     }
 
     function renderClassView(c) {
