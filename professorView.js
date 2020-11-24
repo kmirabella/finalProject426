@@ -105,8 +105,6 @@ async function getProfId(){
 
 $(function () {
 
-  console.log("it works");
-  console.log(getProfId());
   
 
   dateObj = {};
@@ -181,7 +179,6 @@ export function renderBusiestDays() {
   count.sort((a, b) => (a - b));
   for (let u = count.length - 1; u > count.length - 6; u--) {
     let date = dateObj2[count[u]];
-    console.log(dateObj2[count[u]]);
     let d = new Date(date);
     d = d.toDateString();
 
