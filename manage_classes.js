@@ -29,25 +29,12 @@ async function renderStudentView() {
 
     let dates = student.dates;
 
-    // let req = await axios({
-    //     method: "GET",
-    //     url: "https://comp426backend.herokuapp.com/student",
-    //     withCredentials: true,
-    // });
-    //console.log(req);
-
-    //req.body.classes.forEach((c) => classes.push(c));
-
-    //render student's existing classes and exam dates
-    // assign global 'classes' var to the correct student's classes
     $("#add-view").append(renderAddForm());
     $("#add-view").append('<h1 class="has-text-centered title is-1">My Classes</h1><hr>');
     if (classes!=null && classes.length > 0) {
         classes.forEach((c) => renderClassView(c));
     }
-    //else {
-    //     $("#add-view").append(renderAddForm());
-    // }
+    
 
     $("#add-date").append(renderAddDateForm());
     $("#add-date").append('<h1 class="has-text-centered title is-1">My Exam Dates</h1><hr>');
@@ -132,21 +119,9 @@ async function renderStudentView() {
     }
 
     function renderClassView(c) {
-        //let $classView = $('<div class="class_box" id="class-display"></div>');
         let $className = $(`<h5 class="has-text-centered subtitle is-4">${c.name}</h5>`);
         $("#add-view").append($className);
-        //let buttons
-        // if (c.exam_dates.length > 0) {
-        //     $className.append('<hr><h1 class="subtitle is-2">Exam Dates</h1>');
-        //     c.exam_dates.forEach((date) => {
-        //         //let $dateDiv = $('<div class="is-flex-direction-column is-align-content-space-between"></div>')
-        //         let $date = $(`<p class="subtitle is-5">${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}</p>`);
-        //         $className.append($date);
-        //     });
-        // } else {
-        //     $className.append("<h3>There are no exam dates set up for this class.</h3>")
-        // }
-        //$root.append($classView);
+       
     }
 
     function renderDateView(c) {
