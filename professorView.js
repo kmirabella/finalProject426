@@ -105,6 +105,8 @@ async function getProfId(){
 
 $(function () {
 
+  console.log("it works");
+  console.log(getProfId());
   
 
   dateObj = {};
@@ -136,8 +138,15 @@ $(function () {
 
 
   $("#signout-button").on('click', signout);
+  // let findLoggedInProf = async function(id){
+  //   let req = await axios({
+  //     method: "get",
+  //     url: "https://comp426backend.herokuapp.com/professor" ,
+  //   })
+  //   console.log(req); 
+  // }
 
-
+  // $("#search-button").on('click', searchHandler);
   $("#date-header").on('click', sortByDate);
   $("#exam-header").on('click', sortByExam);
   $("#search-button").on('click', searchDate);
@@ -155,7 +164,11 @@ async function submitCreateClass(e) {
     $("div.class_box").append($("<h2 id='error-message'>Error</h2>"));
     return;
   }
+  // await axios({
+  //     method: "PUT",
+  //     url: "https://comp426backend.herokuapp.com/professor/createclass/:id",
 
+  // })
   window.location.href = "./professorView.html"
 }
 
@@ -168,6 +181,7 @@ export function renderBusiestDays() {
   count.sort((a, b) => (a - b));
   for (let u = count.length - 1; u > count.length - 6; u--) {
     let date = dateObj2[count[u]];
+    console.log(dateObj2[count[u]]);
     let d = new Date(date);
     d = d.toDateString();
 
@@ -228,7 +242,9 @@ function sortByDate(event) {
     let tableDate = $(`<tr><td>${dateArr[u]}</td><td>${countDate}</td></tr>`);
     $("tbody").append(tableDate);
   }
- 
+  // $("tbody").forEach((c) => {
+  //   console.log(c);
+  // })
 }
 
 function sortByExam() {
@@ -253,3 +269,67 @@ async function signout() {
     url: "https://comp426backend.herokuapp.com/logout"
   })
 }
+
+// ===============================AUTOCOMPLETE==================================
+function autocomplete(myInput, classArray) {
+  myInput.addEventListener("input", function (e) {
+    minimizeOptions();
+    var val = this.value;
+    if (!val) {
+      return;
+    }
+
+    var a = document.createElement("DIV");
+    a.setAttribute("id", this.id + "autocomplete-list");
+    a.setAttribute("class", "autocomplete-items");
+    this.parentNode.appendChild(a);
+
+    for (var i = 0; i < classArray.length; i++) {
+      if (classArray[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+        var b = document.createElement("DIV");
+        b.innerHTML = "<strong>" + classArray[i].substr(0, val.length) + "</strong>";
+        b.innerHTML += classArray[i].substr(val.length);
+        b.innerHTML += "<input type='hidden' value='" + classArray[i] + "'>";
+        b.addEventListener("click", function (e) {
+          myInput.value = this.getElementsByTagName("input")[0].value;
+          minimizeOptions();
+        });
+        a.appendChild(b);
+      }
+    }
+  });
+
+
+
+  function minimizeOptions(item) {
+    var classList = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < classList.length; i++) {
+      if (item != classList[i] && item != myInput) {
+        classList[i].parentNode.removeChild(classList[i]);
+      }
+    }
+  }
+
+}
+
+function debounce(func, wait, immediate) {
+  var timeout;
+  return function () {
+    var context = this, args = arguments;
+    var later = function () {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    var callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
+};
+
+var incorporateDebounce = debounce(function () {
+  let classList = [];
+  classes.forEach((c) => classList.push(c.name));
+  autocomplete(document.getElementById("className"), classList)
+}, 250);
+// =============================END AUTOCOMPLETE==================================
