@@ -74,7 +74,7 @@ async function renderStudentView() {
     function renderAddForm() {
         let formView = $('<div class="class_box" id="class_display"></div>');
         let form = $("<form id='add-info-form'></form>");
-        let autocomplete = $(`<input class="input" type="text" id="className" placeholder="Enter Class Code">`).css('width', '700px');
+        let autocomplete = $(`<input class="input" type="text" id="className" placeholder="Enter Class Name">`).css('width', '700px');
         let addAutoButton = $(`<button type="button" class="button">+</button>`).on('click', addClassSelector);
         form.append(autocomplete).append(addAutoButton);
         formView.append(form);
