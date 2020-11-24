@@ -23,7 +23,6 @@ async function renderStudentView() {
     let counter = 0;
     let student = await getStudent();
     let classes = null;
-    console.log(student);
     if (student.length != 0) {
         classes = await getClassNames(student.id);
     }
@@ -58,7 +57,6 @@ async function renderStudentView() {
 
     async function updateDates(date) {
         student.dates[student.dates.length] = date;
-        //console.log(student);
 
         let req = await axios({
             method: "PUT",
