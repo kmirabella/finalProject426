@@ -45,7 +45,6 @@ async function renderStudentView() {
     $("#add-view").append('<h1 class="has-text-centered title is-1">My Classes</h1><hr>');
     if (classes!=null && classes.length > 0) {
         classes.forEach((c) => renderClassView(c));
-        alert("this works");
     }
     //else {
     //     $("#add-view").append(renderAddForm());
@@ -100,16 +99,15 @@ async function renderStudentView() {
 
     async function addClassSelector() {
         let className = {
-            "code": $("#className").val()
+            "name": $("#className").val()
         };
-        console.log(className);
         renderClassView(className);
 
         await axios({
             method: "PUT",
             url: `https://comp426backend.herokuapp.com/student/${student.id}/create`,
             body: {
-                "classCode": className.code
+                "name": className.code
             }
         })
     }
