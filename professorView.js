@@ -62,13 +62,49 @@ let Professor =
             "day": "10",
             "month": "11",
             "year": "2020",
-            "total": "426"
+            "total": "58"
           },
           {
-            "day": "11",
+            "day": "03",
             "month": "04",
             "year": "2020",
             "total": "198"
+          },
+          {
+            "day": "02",
+            "month": "09",
+            "year": "2020",
+            "total": "3"
+          },
+          {
+            "day": "08",
+            "month": "11",
+            "year": "2020",
+            "total": "250"
+          },
+          {
+            "day": "12",
+            "month": "04",
+            "year": "2020",
+            "total": "158"
+          },
+          {
+            "day": "06",
+            "month": "23",
+            "year": "2020",
+            "total": "30"
+          },
+          {
+            "day": "04",
+            "month": "30",
+            "year": "2020",
+            "total": "240"
+          },
+          {
+            "day": "07",
+            "month": "04",
+            "year": "2020",
+            "total": "19"
           }
         ],
         "students": [
