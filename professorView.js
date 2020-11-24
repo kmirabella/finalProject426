@@ -30,6 +30,11 @@ let Professor =
             "total": "128"
           }
         ],
+        "my_exams": [{
+          "day": "3",
+          "month": "09",
+          "year": "2020"
+        }],
         "students": [
           {
             "password": "comp123",
