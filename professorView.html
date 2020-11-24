@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style = "background-color: #209cee;">
+<html lang="en" style="background-color: #209cee;">
 
 <head>
   <meta charset="UTF-8">
@@ -13,45 +13,48 @@
   <title>Professor View</title>
 </head>
 
-<body  >
-  <nav class="navbar has-background-grey-lighter">
-    <img onclick="location.href='./index.html'" src="./logo2.png" alt = "logo" style="height: 100px">
-    <div class="navbar-end">
-        <div class="navbar-item">
-            <div class="buttons" style="font-family: Amatic SC">
-                <button onclick="location.href='./index.html'"
-                    class="button has-background-danger has-text-white is-large is-block"><strong>Sign
-                        out</strong></button>
-                
-            </div>
-        </div>
+<body>
+  <nav class="navbar has-background-white">
+    <img onclick="location.href='./index.html'" src="./logo2.png" alt="logo" style="height: 100px">
+    <div class="navbar-begin navbar-item buttons">
+      <button onclick="location.href='./profDash.html'" class="button has-background-info is-light has-text-white is-large is-block">+</button>
     </div>
-</nav>
-  <h1 id="add-view" class="title has-text-centered has-text-white is-family-code">Dashboard</h1>
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons" style="font-family: Amatic SC">
+          <button onclick="location.href='./index.html'"
+            class="button has-background-info is-light has-text-white is-large is-block"><strong>Sign
+              out</strong></button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <h1 id="add-view" class="title is-1 mt-4 has-text-centered">Dashboard</h1>
   <section class="columns">
     <div class="column is-one-quarter ml-5 mr-3" id="search-functions">
       <!-- search bar for desired exam date -->
-      
+
 
       <div class="field has-addons">
         <div class="control">
-        <input type="text" class="search input" placeholder="MM/DD/YYYY" id = "search-field">        
+          <label for="date-search" class="title is-4">Search for an exam date</label>
+          <input type="text" name="date-search" class="search input" placeholder="MM/DD/YYYY" id="search-field">
         </div>
-        <div class="control">
-          <button id="search-button" class="button is-danger">🔍</button>
+        <div class="control ml-1 mt-5 pt-1">
+          <button id="search-button" class="button is-info is-light">🔍</button>
         </div>
       </div>
       <div class="buttons">
-        <button class="button is-danger is-hoverable" id="backButton">Back</button>
+        <button class="button is-info is-light is-hoverable" id="backButton">↻</button>
       </div>
-      
+
     </div>
     <div class="column is-one-half">
       <table class="table is-bordered is-striped is-hoverable is-fullwidth ">
         <thead>
           <tr>
-            <th id="date-header" title="Date">Date</th>
-            <th id="exam-header" title="Exam Count">Exam Count</th>
+            <th id="date-header" title="Date">Date ↓</th>
+            <th id="exam-header" title="Exam Count">Exam Count ↓</th>
           </tr>
         </thead>
         <tbody>
@@ -66,38 +69,35 @@
 
   </section>
 
- 
+
 
   <section class="section">
     <div class="container">
-        <div class="content">
-            <div class="columns">
-                <div class="column">
-                  <h1 class="title">Busiest Days</h1>
-                  <h5 class="subtitle has-text-white">Your students are busiest on these days</h5>
-                  <div class="buttons">
-                    <button class="button is-danger is-hoverable" id="busiestDays">Display</button>
-                  </div>
-                  <blockquote> 
-                    <ol type="1">
-                
-                    </ol>
-                  </blockquote>
-                </div>
-                <div class="column">
-                  <h1 class="title">Your Exam Dates</h1>
-                  <h5 class="subtitle has-text-white">These are your scheduled exams</h5>
-                  <blockquote>
-                    <ol type="1">
-                      <li> 08/14/2020</li>
-                      <li> 10/03/2020</li>
-                    </ol>
-                  </blockquote>
-                </div>
-            </div>
+      <div class="content">
+        <div class="columns">
+          <div class="column">
+            <h1 class="title">Busiest Days</h1>
+            <h5 class="subtitle has-text-white">Your students are busiest on these days</h5>
+            <blockquote>
+              <ol id="busiest-list" type="1">
+
+              </ol>
+            </blockquote>
+          </div>
+          <div class="column">
+            <h1 class="title">Your Exam Dates</h1>
+            <h5 class="subtitle has-text-white">These are your scheduled exams</h5>
+            <blockquote>
+              <ol type="1">
+                <li> 08/14/2020</li>
+                <li> 10/03/2020</li>
+              </ol>
+            </blockquote>
+          </div>
         </div>
+      </div>
     </div>
-</section>
+  </section>
 
 
 
