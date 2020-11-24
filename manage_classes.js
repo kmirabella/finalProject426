@@ -1,33 +1,34 @@
 $(renderStudentView());
 
-async function getStudent(){
+async function getStudent() {
     let req = await axios({
         method: "GET",
         url: "https://comp426backend.herokuapp.com/student",
         withCredentials: true,
     });
-    return await req.data;
+    return req.data;
 }
 
-async function getClassNames(class_ids){
+async function getClassNames(id) {
     let req = await axios({
         method: "GET",
-        url: "https://comp426backend.herokuapp.com/student/classnames/0",
+        url: `https://comp426backend.herokuapp.com/student/classnames/` + id,
         withCredentials: true
     });
-    return await req.data;
+    return req.data;
 }
 
 async function renderStudentView() {
     const $root = $("#root");
     let counter = 0;
     let student = await getStudent();
-    let classes = await getClassNames(student.classes);
-    console.log(classes);
+    let classes = null;
     console.log(student);
+    if (student.length != 0) {
+        classes = await getClassNames(student.id);
+    }
 
     let dates = student.dates;
-
 
     // let req = await axios({
     //     method: "GET",
@@ -42,10 +43,10 @@ async function renderStudentView() {
     // assign global 'classes' var to the correct student's classes
     $("#add-view").append(renderAddForm());
     $("#add-view").append('<h1 class="has-text-centered title is-1">My Classes</h1><hr>');
-    if (classes.length > 0) {
+    if (classes!=null && classes.length > 0) {
         classes.forEach((c) => renderClassView(c));
-        //alert("this works");
-    } 
+        alert("this works");
+    }
     //else {
     //     $("#add-view").append(renderAddForm());
     // }
@@ -54,16 +55,15 @@ async function renderStudentView() {
     $("#add-date").append('<h1 class="has-text-centered title is-1">My Exam Dates</h1><hr>');
     if (dates.length > 0) {
         dates.forEach((c) => renderDateView(c));
-        //alert("this works");
     }
 
-    async function updateDates(date){
+    async function updateDates(date) {
         student.dates[student.dates.length] = date;
         //console.log(student);
 
         let req = await axios({
             method: "PUT",
-            url: "https://comp426backend.herokuapp.com/student/create/0",
+            url: `https://comp426backend.herokuapp.com/student/${student.id}/create`,
             withCredentials: true,
             body: {
                 "class_ids": student.classes,
@@ -79,7 +79,7 @@ async function renderStudentView() {
         let addAutoButton = $(`<button type="button" class="button">+</button>`).on('click', addClassSelector);
         form.append(autocomplete).append(addAutoButton);
         formView.append(form);
-        
+
 
         return formView;
     }
@@ -93,7 +93,7 @@ async function renderStudentView() {
         let addAutoButton = $(`<button type="button" class="button">+</button>`).on('click', addDateSelector);
         form.append(autocomplete).append(addAutoButton);
         formView.append(form);
-        
+
 
         return formView;
     }
@@ -108,7 +108,7 @@ async function renderStudentView() {
         // console.log($(`#div-${counter}`)[0]);
         // target.after(inputDiv);
         // counter++;
-        let className ={
+        let className = {
             "name": $("#className").val()
         };
         console.log(className);
@@ -116,12 +116,12 @@ async function renderStudentView() {
     }
 
     function addDateSelector() {
-        if($("#day").val().length !== 2 || $("#month").val().length !== 2 || $("#year").val().length !== 4 || 
-        $("#day").val() === "" || $("#month").val() === "" || $("#year").val() === ""){
+        if ($("#day").val().length !== 2 || $("#month").val().length !== 2 || $("#year").val().length !== 4 ||
+            $("#day").val() === "" || $("#month").val() === "" || $("#year").val() === "") {
             alert("Your date should be formated MM DD YYY");
             return;
         }
-        
+
         let day = $("#day").val();
         let month = $("#month").val();
         let year = $("#year").val();
@@ -131,8 +131,9 @@ async function renderStudentView() {
             "year": year
         };
 
-        //updateDates(newDate);
+        updateDates(newDate);
         renderDateView(newDate);
+        location.reload;
     }
 
     function renderClassView(c) {

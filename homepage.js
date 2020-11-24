@@ -31,8 +31,10 @@ async function handleLogin(e) {
         withCredentials:true
     })
     if(req.data){ 
-        window.location.replace("./professorView.html");
-    }
+         window.location.replace("./professorView.html");
+     } else {
+        window.location.replace("./manage_classes.html");
+     }
 }
 
 async function handleSubmitSignup(e) {
