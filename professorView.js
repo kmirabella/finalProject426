@@ -99,10 +99,9 @@ $(async function () {
     method: 'get',
     url: 'https://comp426backend.herokuapp.com/professor/',
     withCredentrials: true
-
   });
 
-  console.log(professor);
+  await console.log(professor);
   dateObj = {};
   dateObj2 = {};
   Professor[0].classes.forEach((c) => {
