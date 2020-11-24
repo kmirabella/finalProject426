@@ -158,7 +158,6 @@ $(function () {
 
       row.append(date).append(count);
       $("tbody").append(row);
-      $("#personal-exams").append($(`<p>${e.month}/${e.day}/${e.year} – ${c.name.toUpperCase()}</p>`).css('font-size', '1.1em'))
     })
   })
 
